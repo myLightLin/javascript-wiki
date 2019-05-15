@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动监听</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            background-color: #f8f8f8;
+            height: 50px;
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .nav>h3 {
+            font-weight: normal;
+            font-size: 20px;
+            color: #777;
+            float: left;
+            margin: 0;
+            line-height: 50px;
+            padding-left: 20px;
+        }
+
+        .nav>ul {
+            float: left;
+            margin: 0;
+        }
+
+        .nav>ul>li {
+            list-style: none;
+            float: left;
+        }
+
+        .nav>ul>li>a {
+            text-decoration: none;
+            color: #777;
+            display: block;
+            padding: 16px 20px;
+        }
+
+        .current {
+            background-color: #e7e7e7;
+        }
+
+        section.content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            top: 50px;
+        }
+
+        section.content p {
+            margin: 0;
+        }
+
+        section.content div {
+            height: 300px;
+            background-color: #efefef;
+            border-top: 1px solid #ccc;
+        }
+
+        section.content div:nth-child(2n) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <nav class="nav">
+            <h3>JS 滚动监听示例</h3>
+            <ul>
+                <li class="current">
+                    <a href="#page1">fat</a>
+                </li>
+                <li>
+                    <a href="#page2">modo</a>
+                </li>
+                <li>
+                    <a href="#page3">Dropdown</a>
+                </li>
+            </ul>
+        </nav>
+        <section class="content">
+            <div class="mainPage" id="page1">
+                <p>@fat<br>
+                    Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
+                    qui. Veniam marfa mustache skateboardVeniam marfa mustache skateboardTumblr farm-to-table bicycle
+                    rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon
+                    irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of
+                    them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred
+                    irony biodiesel keffiyeh artisan ullamco consequat.Tumblr farm-to-table bicycle rights whatever.
+                    Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater
+                    lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust
+                    fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh
+                    artisan ullamco consequat.
+                    Ad leggings keytar Veniam marfa mustache skateboardVeniam marfa mustache skateboardTumblr
+                    farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo
+                    booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably
+                    haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed
+                    accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.Tumblr farm-to-table bicycle
+                    rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon
+                    irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of
+                    them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred
+                    irony biodiesel keffiyeh artisan ullamco consequat.
+                </p>
+            </div>
+            <div class="mainPage" id="page2">
+                <p>@mdo<br>
+                    Pitchfork yr enim lo-fi before they sold out qui. Anim keffiyeh carles cardigan. Velit seitan
+                    mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
+                    qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson
+                    aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.Tumblr
+                    farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo
+                    booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably
+                    haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed
+                    accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+                    Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
+                    qui. Veniam marfa mustache skateboardVeniam marfa mustache skateboardTumblr farm-to-table bicycle
+                    rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon
+                    irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of
+                    them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred
+                    irony biodiesel keffiyeh artisan ullamco consequat.Tumblr farm-to-table bicycle rights whatever.
+                    Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater
+                    lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust
+                    fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh
+                    artisan ullamco consequat.
+                </p>
+            </div>
+            <div class="mainPage" id="page3" style="height: 700px">
+                <p>@dropdown<br>
+                    Ad leggings keytar, brunch id art party dolor labore. Nihil tattooed accusamus, cred irony biodiesel
+                    keffiyeh artisan ullamco consequat.
+                    Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
+                    qui. Veniam marfa mustache skateboardVeniam marfa mustache skateboardTumblr farm-to-table bicycle
+                    rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon
+                    irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of
+                    them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred
+                    irony biodiesel keffiyeh artisan ullamco consequat.Tumblr farm-to-table bicycle rights whatever.
+                    Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater
+                    lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust
+                    fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh
+                    artisan ullamco consequat.
+                </p>
+            </div>
+        </section>
+    </section>
+
+
+    <script>
+        'use strict';
+        var divHeights = [];    // 存放元素的距离顶部的 top 值
+        var lis = [...document.querySelectorAll('.nav > ul > li')];  // 获取所有 li 标签来更新背景色
+        var divs = [...document.querySelectorAll('.mainPage')];  // 获取所有内容块的 div 元素集合
+        for (var i = 0; i < divs.length; i++) {         // 循环每个 div 的距离 top 的值存放至数组
+            divHeights.push(divs[i].getBoundingClientRect().top);
+        }
+        
+        window.addEventListener('scroll', updateNav);  // 监听 scroll 事件，更新导航栏状态
+
+        function updateNav() {
+            var scop = document.documentElement.scrollTop;
+            var k;
+            for (var i = 0; i < divHeights.length; i++) {
+                if (scop > divHeights[i] - 50) {
+                    k = i;
+                }
+            }
+            lis[k].classList.add('current');
+            for (var i = 0; i < lis.length; i++) {
+                if (i == k) continue;
+                else lis[i].classList.remove('current');
+            }
+        }
+    </script>
+</body>
+</html>
