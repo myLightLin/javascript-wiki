@@ -1,6 +1,6 @@
 # lightlin’s Blog
 
-## 其它平台
+## 链接
 
 * [掘金](https://juejin.cn/user/3685218708362030)
 
