@@ -12,6 +12,7 @@
 4. [JS 中的 this](https://github.com/myLightLin/javascript-wiki/issues/10)
 5. [new 的原理](https://github.com/myLightLin/javascript-wiki/issues/11)
 6. [模块化发展历程](https://github.com/myLightLin/javascript-wiki/issues/21)
+7. [函数柯里化](https://github.com/myLightLin/javascript-wiki/issues/28)
 
 ## 小程序
 
