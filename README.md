@@ -6,13 +6,14 @@
 
 ## JavaScript
 
-1. [原型与原型链](https://github.com/myLightLin/javascript-wiki/issues/1)
-2. [执行上下文](https://github.com/myLightLin/javascript-wiki/issues/6)
-3. [闭包](https://github.com/myLightLin/javascript-wiki/issues/7)
-4. [JS 中的 this](https://github.com/myLightLin/javascript-wiki/issues/10)
-5. [new 的原理](https://github.com/myLightLin/javascript-wiki/issues/11)
-6. [模块化发展历程](https://github.com/myLightLin/javascript-wiki/issues/21)
-7. [函数柯里化](https://github.com/myLightLin/javascript-wiki/issues/28)
+1. [基本类型与引用类型](https://github.com/myLightLin/javascript-wiki/issues/29)
+2. [原型与原型链](https://github.com/myLightLin/javascript-wiki/issues/1)
+3. [执行上下文](https://github.com/myLightLin/javascript-wiki/issues/6)
+4. [闭包](https://github.com/myLightLin/javascript-wiki/issues/7)
+5. [JS 中的 this](https://github.com/myLightLin/javascript-wiki/issues/10)
+6. [new 的原理](https://github.com/myLightLin/javascript-wiki/issues/11)
+7. [模块化发展历程](https://github.com/myLightLin/javascript-wiki/issues/21)
+8. [函数柯里化](https://github.com/myLightLin/javascript-wiki/issues/28)
 
 ## 小程序
 
