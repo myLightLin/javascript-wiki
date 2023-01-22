@@ -20,6 +20,10 @@
 1. [小程序的双线程模型](https://github.com/myLightLin/javascript-wiki/issues/4)
 2. [小程序的用户体系](https://github.com/myLightLin/javascript-wiki/issues/5)
 
+## CSS
+
+1. [flex 布局](https://github.com/myLightLin/javascript-wiki/issues/30)
+
 ## typescript
 1. [type 和 interface 的区别](https://github.com/myLightLin/javascript-wiki/issues/16)
 
