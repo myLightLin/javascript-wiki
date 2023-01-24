@@ -29,8 +29,9 @@
 
 1. [理解 JSX](https://github.com/myLightLin/javascript-wiki/issues/32)
 2. [React 有哪些生命周期钩子？](https://github.com/myLightLin/javascript-wiki/issues/33)
-3. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
-4. [React 组件是如何实现数据通信的？](https://github.com/myLightLin/javascript-wiki/issues/35)
+3. [React 组件是如何实现数据通信的？](https://github.com/myLightLin/javascript-wiki/issues/35)
+4. [聊聊 React Hooks](https://github.com/myLightLin/javascript-wiki/issues/36)
+5. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
 
 ## typescript
 1. [type 和 interface 的区别](https://github.com/myLightLin/javascript-wiki/issues/16)
