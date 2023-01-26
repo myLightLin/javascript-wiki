@@ -14,6 +14,7 @@
 6. [new 的原理](https://github.com/myLightLin/javascript-wiki/issues/11)
 7. [模块化发展历程](https://github.com/myLightLin/javascript-wiki/issues/21)
 8. [函数柯里化](https://github.com/myLightLin/javascript-wiki/issues/28)
+9. [JS 实现一个简单的权重抽奖算法](https://github.com/myLightLin/javascript-wiki/issues/24)
 
 ## 小程序
 
@@ -61,10 +62,9 @@
 5. [TCP 与 UDP](https://github.com/myLightLin/javascript-wiki/issues/9)
 6. [WebSocket 协议](https://github.com/myLightLin/javascript-wiki/issues/27)
 
-## 工程化
+## 数据结构与算法
 
-1. [JS 实现一个简单的权重抽奖算法](https://github.com/myLightLin/javascript-wiki/issues/24)
-2. [算法：将列表还原为树状结构](https://github.com/myLightLin/javascript-wiki/issues/22)
+1. [算法：将列表还原为树状结构](https://github.com/myLightLin/javascript-wiki/issues/22)
 
 ## 后记
 
