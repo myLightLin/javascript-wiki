@@ -33,7 +33,8 @@
 4. [聊聊 React Hooks](https://github.com/myLightLin/javascript-wiki/issues/36)
 5. [聊聊 setState API](https://github.com/myLightLin/javascript-wiki/issues/38)
 6. [理解虚拟 DOM](https://github.com/myLightLin/javascript-wiki/issues/37)
-7. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
+7. [React 性能优化](https://github.com/myLightLin/javascript-wiki/issues/39)
+8. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
 
 ## typescript
 1. [type 和 interface 的区别](https://github.com/myLightLin/javascript-wiki/issues/16)
