@@ -14,7 +14,8 @@
 6. [new 的原理](https://github.com/myLightLin/javascript-wiki/issues/11)
 7. [模块化发展历程](https://github.com/myLightLin/javascript-wiki/issues/21)
 8. [函数柯里化](https://github.com/myLightLin/javascript-wiki/issues/28)
-9. [JS 实现一个简单的权重抽奖算法](https://github.com/myLightLin/javascript-wiki/issues/24)
+9. [垃圾回收机制](https://github.com/myLightLin/javascript-wiki/issues/42)
+10. [JS 实现一个简单的权重抽奖算法](https://github.com/myLightLin/javascript-wiki/issues/24)
 
 ## 小程序
 
