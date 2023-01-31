@@ -16,6 +16,9 @@
 8. [函数柯里化](https://github.com/myLightLin/javascript-wiki/issues/28)
 9. [垃圾回收机制](https://github.com/myLightLin/javascript-wiki/issues/42)
 10. [JS 实现一个简单的权重抽奖算法](https://github.com/myLightLin/javascript-wiki/issues/24)
+11. [JS 之 call 和 apply 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/43)
+12. [JS 之 bind 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/44)
+13. [JS 之 reduce 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/46)
 
 ## 小程序
 
@@ -37,6 +40,9 @@
 6. [理解虚拟 DOM](https://github.com/myLightLin/javascript-wiki/issues/37)
 7. [React 性能优化](https://github.com/myLightLin/javascript-wiki/issues/39)
 8. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
+
+## Node
+1. [实现一个 EventEmitter](https://github.com/myLightLin/javascript-wiki/issues/45)
 
 ## typescript
 1. [type 和 interface 的区别](https://github.com/myLightLin/javascript-wiki/issues/16)
