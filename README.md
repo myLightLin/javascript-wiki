@@ -40,6 +40,7 @@
 6. [理解虚拟 DOM](https://github.com/myLightLin/javascript-wiki/issues/37)
 7. [React 性能优化](https://github.com/myLightLin/javascript-wiki/issues/39)
 8. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
+9. [浅谈 React 逻辑复用的几种方式](https://github.com/myLightLin/javascript-wiki/issues/40)
 
 ## Node
 1. [实现一个 EventEmitter](https://github.com/myLightLin/javascript-wiki/issues/45)
