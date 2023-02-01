@@ -45,7 +45,7 @@
 ## Node
 1. [实现一个 EventEmitter](https://github.com/myLightLin/javascript-wiki/issues/45)
 
-## Typescript
+## TypeScript
 1. [type 和 interface 的区别](https://github.com/myLightLin/javascript-wiki/issues/16)
 
 ## 浏览器
