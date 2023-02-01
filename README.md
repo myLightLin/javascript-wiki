@@ -61,6 +61,7 @@
 9. [浏览器安全之 XSS 攻击](https://github.com/myLightLin/javascript-wiki/issues/12)
 10. [浏览器安全之 CSRF 攻击](https://github.com/myLightLin/javascript-wiki/issues/13)
 11. [requestAnimationFrame 可以做什么](https://github.com/myLightLin/javascript-wiki/issues/41)
+12. [v8 的工作原理](https://github.com/myLightLin/javascript-wiki/issues/47)
 
 ## 计算机网络
 
