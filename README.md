@@ -19,6 +19,7 @@
 11. [JS 之 call 和 apply 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/43)
 12. [JS 之 bind 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/44)
 13. [JS 之 reduce 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/46)
+14. [JS 之深拷贝与浅拷贝](https://github.com/myLightLin/javascript-wiki/issues/48)
 
 ## 小程序
 
