@@ -1,5 +1,5 @@
 # lightlin’s Blog
-
+写是为了记录分享，也是为了备忘
 ## JavaScript
 
 1. [基本类型与引用类型](https://github.com/myLightLin/javascript-wiki/issues/29)
