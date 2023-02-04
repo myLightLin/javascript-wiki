@@ -1,9 +1,5 @@
 # lightlin’s Blog
 
-## 链接
-
-* [掘金](https://juejin.cn/user/3685218708362030)
-
 ## JavaScript
 
 1. [基本类型与引用类型](https://github.com/myLightLin/javascript-wiki/issues/29)
