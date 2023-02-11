@@ -75,9 +75,6 @@
 
 1. [Webpack](https://github.com/myLightLin/javascript-wiki/issues/50)
 
-## 数据结构与算法
-
-1. [算法：将列表还原为树状结构](https://github.com/myLightLin/javascript-wiki/issues/22)
 
 ## 后记
 
