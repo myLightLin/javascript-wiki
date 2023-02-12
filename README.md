@@ -43,18 +43,18 @@
 
 ## 浏览器
 
-1. [浏览器事件循环](https://github.com/myLightLin/javascript-wiki/issues/2)
-2. [浏览器的事件传播机制](https://github.com/myLightLin/javascript-wiki/issues/19)
-3. [浏览器缓存机制](https://github.com/myLightLin/javascript-wiki/issues/8)
-4. [浏览器资源解析渲染](https://github.com/myLightLin/javascript-wiki/issues/20)
-5. [cookie, sessionStorage 与 localSotrage, IndexDB](https://github.com/myLightLin/javascript-wiki/issues/14)
-6. [前端路由](https://github.com/myLightLin/javascript-wiki/issues/15)
-7. [进程与线程](https://github.com/myLightLin/javascript-wiki/issues/18)
-8. [浏览器跨域](https://github.com/myLightLin/javascript-wiki/issues/17)
-9. [浏览器安全之 XSS 攻击](https://github.com/myLightLin/javascript-wiki/issues/12)
-10. [浏览器安全之 CSRF 攻击](https://github.com/myLightLin/javascript-wiki/issues/13)
-11. [requestAnimationFrame 可以做什么](https://github.com/myLightLin/javascript-wiki/issues/41)
-12. [v8 的工作原理](https://github.com/myLightLin/javascript-wiki/issues/47)
+1. [v8 的工作原理](https://github.com/myLightLin/javascript-wiki/issues/47)
+2. [浏览器事件循环](https://github.com/myLightLin/javascript-wiki/issues/2)
+3. [浏览器的事件传播机制](https://github.com/myLightLin/javascript-wiki/issues/19)
+4. [浏览器缓存机制](https://github.com/myLightLin/javascript-wiki/issues/8)
+5. [浏览器资源解析渲染](https://github.com/myLightLin/javascript-wiki/issues/20)
+6. [cookie, sessionStorage 与 localSotrage, IndexDB](https://github.com/myLightLin/javascript-wiki/issues/14)
+7. [前端路由](https://github.com/myLightLin/javascript-wiki/issues/15)
+8. [进程与线程](https://github.com/myLightLin/javascript-wiki/issues/18)
+9. [浏览器跨域](https://github.com/myLightLin/javascript-wiki/issues/17)
+10. [浏览器安全之 XSS 攻击](https://github.com/myLightLin/javascript-wiki/issues/12)
+11. [浏览器安全之 CSRF 攻击](https://github.com/myLightLin/javascript-wiki/issues/13)
+12. [requestAnimationFrame 可以做什么](https://github.com/myLightLin/javascript-wiki/issues/41)
 
 ## 计算机网络
 
