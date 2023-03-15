@@ -2,29 +2,44 @@
  * 实现节流
  * 思路：时间戳 + 定时器
  */
-function throttle(fn, wait) {
-  let timeout, args, context
-  let previous = 0 
-  return function() {
-    args = arguments
+function throttle(func, wait, options = {leading: true, trailing: false}) {
+  let timeout, context, args
+  let previous = 0
+
+  let later = function() {
+    previous = options.leading ? new Date().getTime() : 0
+    timeout = null
+    func.apply(context, args)
+    if (!timeout) context = args = null
+  }
+
+  let throttled = function() {
+    let now = new Date().getTime()
+    if (!previous && !options.leading) previous = now
+    let remaining = wait - (now - previous)
     context = this
-    const now = +new Date()
-    const remaining = wait - (now - previous)
-    if (remaining <= 0) {
+    args = arguments
+
+    if (remaining <= 0 || remaining > wait) {
       if (timeout) {
         clearTimeout(timeout)
         timeout = null
       }
       previous = now
-      fn.apply(context, args)
-    } else if (!timeout) {
-      timeout = setTimeout(function() {
-        timeout = null
-        previous = +new Date()
-        fn.apply(context, args)
-      }, remaining)
+      func.apply(context, args)
+      if (!timeout) context = args = null
+    } else if (!timeout && options.trailing) {
+      timeout = setTimeout(later, remaining)
     }
   }
+
+  throttled.cancel = function() {
+    clearTimeout(timeout)
+    timeout = null
+    previous = 0
+  }
+
+  return throttled
 }
 
 // 定时器
@@ -56,4 +71,3 @@ function throttle(fn, wait) {
     }
   }
 }
-

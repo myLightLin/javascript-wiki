@@ -4,9 +4,9 @@
  */
 function draw(prizes) {
   // 根据每个奖品的权重，生成区间 [[0, 50], [50, 100], ...]
-   const intervals = prizes.reduce((acc, curr, idx) => {
+   const intervals = prizes.reduce((acc, curr) => {
        const weight = curr.weight
-       const [preStart, preEnd] = acc[acc.length-1] || [0, 0]
+       const [_, preEnd] = acc[acc.length-1] || [0, 0]
        acc.push([preEnd, preEnd + weight])
        return acc
    }, [])

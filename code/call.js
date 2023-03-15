@@ -1,5 +1,5 @@
 // 模拟实现 call 方法
-Function.prototype.myCall = function(thisArg, args) {
+Function.prototype.myCall = function(thisArg, ...args) {
   if (typeof this !== 'function')  throw new TypeError('it must be invoke by function')
 
   if (thisArg == undefined) {
