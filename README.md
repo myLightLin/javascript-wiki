@@ -69,6 +69,7 @@
 
 1. [Node 事件循环](https://github.com/myLightLin/javascript-wiki/issues/52)
 2. [实现一个 EventEmitter](https://github.com/myLightLin/javascript-wiki/issues/45)
+3. [洋葱模型](https://github.com/myLightLin/javascript-wiki/issues/58)
 
 ## TypeScript
 
