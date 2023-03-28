@@ -69,3 +69,54 @@ const sendRequest = (tasks, max) => {
 
   return Promise.all(together)
 }
+
+class Scheduler {
+  constructor() {
+    this.queue = []
+    this.count = 0
+  }
+
+  add(promiseCreator) {
+    return new Promise((resolve, reject) => {
+      promiseCreator.resolve = resolve
+      promiseCreator.reject = reject
+
+      this.queue.push(promiseCreator)
+      this.run()
+    })
+  }
+
+  run() {
+    if (this.count < 2 && this.queue.length) {
+      this.count += 1
+      const promise = this.queue.shift()
+      promise()
+        .then(res => {
+          promise.resolve(res)
+        })
+        .catch(err => {
+          promise.reject(err)
+        })
+        .finally(() => {
+          this.count -= 1
+          this.run()
+        })
+    }
+  }
+}
+
+const timeout = (time) => new Promise(resolve => {
+  setTimeout(resolve, time)
+})
+
+const scheduler = new Scheduler()
+const addTask = (time, order) => {
+  scheduler.add(() => timeout(time)).then(() => console.log(order))
+}
+
+addTask(1000, '1')
+addTask(500, '2')
+addTask(300, '3')
+addTask(400, '4')
+
+// 打印顺序是：2 3 1 4

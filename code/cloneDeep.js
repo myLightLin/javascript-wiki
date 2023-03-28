@@ -14,3 +14,66 @@ function cloneDeep(target, map = new WeakMap()) {
     return target
   }
 }
+
+const mapTag = '[object Map]'
+const setTag = '[object Set]'
+const arrayTag = '[object Array]'
+const objectTag = '[object Object]'
+
+const deepTag = [mapTag, setTag, arrayTag, objectTag]
+
+function isObject(target) {
+  const type = typeof target
+  return target !== null && (type === 'object' || type === 'function')
+}
+
+function getType(target) {
+  return Object.prototype.toString.call(target)
+}
+
+function getInstance(target) {
+  const Ctor = target.constructor
+  return new Ctor()
+}
+
+function clone(target, map = new WeakMap()) {
+  // 原始类型直接返回
+  if (!isObject(target)) {
+    return target
+  }
+
+  const type = getType(target)
+  let cloneTarget
+  if (deepTag.includes(type)) {
+    cloneTarget = getInstance(target)
+  }
+
+  // 处理循环引用
+  if (map.get(target)) {
+    return map.get(target)
+  }
+  map.set(target, cloneTarget)
+
+  // 处理 Set
+  if (type === setTag) {
+    target.forEach(val => {
+      cloneTarget.add(clone(val, map))
+    })
+    return cloneTarget
+  }
+
+  // 处理 Map
+  if (type === mapTag) {
+    target.forEach((val, key) => {
+      cloneTarget.set(key, clone(val, map))
+    })
+    return cloneTarget
+  }
+
+  // 处理 Array 和 Object
+  for (const key in target) {
+    cloneTarget[key] = cloneDeep(target[key], map)
+  }
+
+  return cloneTarget
+}

@@ -42,6 +42,42 @@ function throttle(func, wait, options = {leading: true, trailing: false}) {
   return throttled
 }
 
+function throttle(func, wait) {
+  let timeout, context, args
+  let previous = 0
+
+  let throttled = function() {
+    context = this
+    args = arguments
+    let now = +new Date()
+    let remaining = wait - (now - previous)
+
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout)
+        timeout = null
+      }
+      previous = now
+      func.apply(context, args)
+      if (!timeout) context = args = null
+    } else if (!timeout) {
+      timeout = setTimeout(function() {
+        timeout = null
+        previous = +new Date()
+        func.apply(context, args)
+      }, remaining)
+    }
+  }
+
+  throttle.cancel = function() {
+    clearTimeout(timeout)
+    timeout = null
+    previous = 0
+  }
+
+  return throttled
+}
+
 // 定时器
 function throttle(fn, wait) {
   let timeout, args, context
