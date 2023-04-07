@@ -1,6 +1,17 @@
 /**
  * 实现一个简单的抽奖算法
  * {@link https://github.com/myLightLin/javascript-wiki/issues/24 Github}
+ * @param {*} prizes 
+ * const prizes = [
+ *   {
+ *     name: "抽奖券",
+ *     weight: 50,
+ *   },
+ *   {
+ *     name: "二奖",
+ *     weight: 80,
+ *   }
+ * ]
  */
 function draw(prizes) {
   // 根据每个奖品的权重，生成区间 [[0, 50], [50, 100], ...]

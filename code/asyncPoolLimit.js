@@ -71,7 +71,8 @@ const sendRequest = (tasks, max) => {
 }
 
 class Scheduler {
-  constructor() {
+  constructor(limit) {
+    this.limit = limit
     this.queue = []
     this.count = 0
   }
@@ -87,7 +88,7 @@ class Scheduler {
   }
 
   run() {
-    if (this.count < 2 && this.queue.length) {
+    if (this.count < this.limit && this.queue.length) {
       this.count += 1
       const promise = this.queue.shift()
       promise()
@@ -109,7 +110,7 @@ const timeout = (time) => new Promise(resolve => {
   setTimeout(resolve, time)
 })
 
-const scheduler = new Scheduler()
+const scheduler = new Scheduler(2)
 const addTask = (time, order) => {
   scheduler.add(() => timeout(time)).then(() => console.log(order))
 }
