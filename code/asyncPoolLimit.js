@@ -121,3 +121,66 @@ addTask(300, '3')
 addTask(400, '4')
 
 // 打印顺序是：2 3 1 4
+
+class Scheduler2 {
+  constructor(maxConcurrent) {
+    this.maxConcurrent = maxConcurrent
+    this.currentConcurrent = 0
+    this.taskQueue = []
+  }
+
+  addTask(promiseFactory) {
+    return new Promise((resolve, reject) => {
+      const taskWrapper = async () => {
+        try {
+          const result = await promiseFactory()
+          resolve(result)
+        } catch (err) {
+          reject(err)
+        } finally {
+          this.currentConcurrent--
+          this.runTask()
+        }
+      }
+
+      if (this.currentConcurrent < this.maxConcurrent) {
+        this.currentConcurrent++
+        taskWrapper()
+      } else {
+        this.taskQueue.push(taskWrapper)
+      }
+    })
+  }
+
+  runTask() {
+    if (this.currentConcurrent >= this.maxConcurrent || this.taskQueue.length === 0) {
+      return
+    }
+
+    const nextTask = this.taskQueue.shift()
+    this.currentConcurrent++
+    nextTask()
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function task(id, duration) {
+  console.log(`Task ${id} start`)
+  await sleep(duration)
+  console.log(`Task ${id} complete`)
+}
+
+(async () => {
+  const scheduler = new Scheduler3(2)
+
+  scheduler.addTask(() => task(1, 1000))
+  scheduler.addTask(() => task(2, 1000))
+  scheduler.addTask(() => task(3, 1000))
+  scheduler.addTask(() => task(4, 1000))
+  scheduler.addTask(() => task(5, 1000))
+
+  await sleep(6000)
+})()
