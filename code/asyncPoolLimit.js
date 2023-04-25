@@ -70,7 +70,7 @@ const sendRequest = (tasks, max) => {
   return Promise.all(together)
 }
 
-class Scheduler {
+class Scheduler2 {
   constructor(limit) {
     this.limit = limit
     this.queue = []
@@ -122,11 +122,11 @@ addTask(400, '4')
 
 // 打印顺序是：2 3 1 4
 
-class Scheduler2 {
-  constructor(maxConcurrent) {
-    this.maxConcurrent = maxConcurrent
-    this.currentConcurrent = 0
-    this.taskQueue = []
+class Scheduler {
+  constructor(concurrency) {
+    this.concurrency = concurrency
+    this.activeCount = 0
+    this.queue = []
   }
 
   addTask(promiseFactory) {
@@ -138,27 +138,27 @@ class Scheduler2 {
         } catch (err) {
           reject(err)
         } finally {
-          this.currentConcurrent--
+          this.activeCount--
           this.runTask()
         }
       }
 
-      if (this.currentConcurrent < this.maxConcurrent) {
-        this.currentConcurrent++
+      if (this.activeCount < this.concurrency) {
+        this.activeCount++
         taskWrapper()
       } else {
-        this.taskQueue.push(taskWrapper)
+        this.queue.push(taskWrapper)
       }
     })
   }
 
   runTask() {
-    if (this.currentConcurrent >= this.maxConcurrent || this.taskQueue.length === 0) {
+    if (this.activeCount >= this.concurrency || this.queue.length === 0) {
       return
     }
 
-    const nextTask = this.taskQueue.shift()
-    this.currentConcurrent++
+    const nextTask = this.queue.shift()
+    this.activeCount++
     nextTask()
   }
 }
@@ -174,7 +174,7 @@ async function task(id, duration) {
 }
 
 (async () => {
-  const scheduler = new Scheduler3(2)
+  const scheduler = new Scheduler(2)
 
   scheduler.addTask(() => task(1, 1000))
   scheduler.addTask(() => task(2, 1000))
