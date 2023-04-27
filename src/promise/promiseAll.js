@@ -1,4 +1,8 @@
-// 模拟实现 Promise.all
+/**
+ * 模拟实现 Promise.all
+ * @param {Array} promises 
+ * @returns {Promise<any>}
+ */
 function promiseAll(promises) {
   const args = toArr(promises)
   let count = 0

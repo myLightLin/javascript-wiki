@@ -1,0 +1,12 @@
+{
+  "name": "javascript-wiki",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:myLightLin/javascript-wiki.git",
+  "author": "lightlin",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
