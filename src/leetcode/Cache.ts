@@ -1,5 +1,5 @@
 /**
- * @link https://leetcode.cn/problems/cache-with-time-limit/
+ * {@link https://leetcode.cn/problems/cache-with-time-limit/ LeetCode}
  * 编写一个类，它允许获取和设置键-值对，并且每个键都有一个 过期时间 。
  * 该类有三个公共方法：
  * set(key, value, duration) ：接收参数为整型键 key 、整型值 value 和以毫秒为单位的持续时间 duration 。
@@ -9,26 +9,42 @@
  * count() ：返回未过期键的总数。
  */
 class TimeLimitedCache {
-  private cacheMap: {[key: number]: [number, number]}
+  private cache: Map<number, [number, number]>
   constructor() {
-    this.cacheMap = {}
+    this.cache = new Map()
   }
 
   set(key: number, value: number, duration: number): boolean {
-    if (!this.cacheMap[key]) {
-      this.cacheMap[key] = [value, duration]
+    const now = Date.now()
+    const item = this.cache.get(key)
+    if (item) {
+      item[0] = now + duration
+      item[1] = value
+      return true
+    } else {
+      this.cache.set(key, [now + duration, value])
       return false
     }
-    this.cacheMap[key] = [value, duration]
-    return true
   }
 
   get(key: number): number {
-    return 0
+    const now = Date.now()
+    const item = this.cache.get(key)
+    if (!item || now > item[0]) return -1
+    return item[1]
   }
 
   count(): number {
-    return Object.keys(this.cacheMap).length
+    const now = Date.now()
+    let res = 0
+    for (const [key, item] of this.cache.entries()) {
+      if (now > item[0]) {
+        this.cache.delete(key)
+      } else {
+        res++
+      }
+    }
+    return res
   }
 }
 
