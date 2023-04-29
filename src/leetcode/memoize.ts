@@ -31,3 +31,4 @@ function memoize(fn: Fn): Fn {
  * memoizedFn(2, 3) // 5
  * console.log(callCount) // 1 
  */
+ export {}
