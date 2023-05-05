@@ -3,7 +3,7 @@ Function.prototype.myApply = function(thisArg, arr) {
   if (typeof this !== 'function')  throw new TypeError('it must be invoke by function')
 
   if (thisArg == undefined) {
-    thisArg = window
+    thisArg = global
   } else {
     thisArg = Object(thisArg)   // 包装成对象
   }

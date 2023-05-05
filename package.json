@@ -6,7 +6,11 @@
   "author": "lightlin",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "mocha"
+  },
   "devDependencies": {
+    "mocha": "^10.2.0",
     "typescript": "^5.0.4"
   }
 }
