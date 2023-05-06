@@ -1,9 +1,12 @@
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
 /**
  * {@link https://promisesaplus.com/ Promise}
  * 实现一个符合 Promise A+ 规范的构造器
  */
 function Promise(executor) {
-  this.state = 'pending'
+  this.state = PENDING
   this.onFulfilledCallback = []
   this.onRejectedCallback = []
 
@@ -11,8 +14,8 @@ function Promise(executor) {
 
   function resolve(value) {
     setTimeout(function() {
-      if (self.state === 'pending') {
-        self.state = 'fulfilled'
+      if (self.state === PENDING) {
+        self.state = FULFILLED
         self.data = value
         for (let i = 0; i < self.onFulfilledCallback.length; i++) {
           self.onFulfilledCallback[i](value)
@@ -23,8 +26,8 @@ function Promise(executor) {
 
   function reject(reason) {
     setTimeout(function() {
-      if (self.state === 'pending') {
-        self.state = 'rejected'
+      if (self.state === PENDING) {
+        self.state = REJECTED
         self.data = reason
         for (let i = 0; i < self.onRejectedCallback.length; i++) {
           self.onRejectedCallback[i](reason)
@@ -46,7 +49,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
   let promise2
 
   return (promise2 = new Promise(function(resolve, reject) {
-    if (self.state === 'fulfilled') {
+    if (self.state === FULFILLED) {
 
       setTimeout(function() {
         if (typeof onFulfilled === 'function') {
@@ -62,7 +65,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
         }
       })
 
-    } else if (self.state === 'rejected') {
+    } else if (self.state === REJECTED) {
       
       setTimeout(function() {
         if (typeof onRejected === 'function') {
@@ -78,7 +81,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
         }
       })
 
-    } else if (self.state === 'pending') {
+    } else if (self.state === PENDING) {
       
       self.onFulfilledCallback.push(function(promise1Value) {
         if (typeof onFulfilled === 'function') {
@@ -115,15 +118,15 @@ function promiseResolutionProcedure(promise2, x, resolve, reject) {
   }
 
   if (x instanceof Promise) {
-    if (x.state === 'pending') {
+    if (x.state === PENDING) {
       x.then(function(value) {
         promiseResolutionProcedure(promise2, value, resolve, reject)
       }, reject)
     }
-    else if (x.state === 'fulfilled') {
+    else if (x.state === FULFILLED) {
       resolve(x.data)
     }
-    else if (x.state === 'rejected') {
+    else if (x.state === REJECTED) {
       reject(x.data)
     }
     return
