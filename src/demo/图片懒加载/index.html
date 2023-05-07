@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片懒加载</title>
+</head>
+<body>
+  <div>
+    <p>
+      程序员（Programmer，Computer Programmer或Coder；程序师），可以指在程序设计某个专业领域中的专业人士，或是从事软件撰写，程序开发、维护的专业人员。但一般Coder特指进行编写代码的编码员。 一个程序员最常使用的编程语言（如汇编语言、COBOL、C、C++、C#、JavaScript、Lisp、Python）可以加在“程序员”这个词前面用来修饰。 涉及编程的一系列职业，如（软件）开发人员、网络开发人员、移动应用程序开发人员、嵌入式固件开发人员、软件工程师、计算机科学家、游戏程序师、游戏开发人员和软件分析师，通常还需要一系列其他类似的技能。用程序员这个词来指代这些职位，有时被认为是一种侮辱性的简化，甚至是贬损。
+    </p>
+  </div>
+  <div>
+    <p>
+      计算机程序员编写、测试、调试和维护被称为计算机程序的详细指令，计算机必须遵循这些指令来执行它们的功能。程序员还构思、设计和测试用计算机解决问题的逻辑结构。编程领域的许多技术创新——先进的计算技术、复杂的新语言和编程工具——重新定义了程序员的角色，提升了当今许多编程工作。职位名称和描述可能会有所不同，取决于组织。
+      程序员在许多环境中工作，包括企业信息技术（“IT”）部门、大型软件公司、小型服务公司和各种规模的政府实体。许多专业程序员也以独立承包人的身份在客户现场为咨询公司工作。程序员通常不需要有从业执照就可以工作，但他们一般都会持有专业认证。编程被广泛认为是一个专业（但有些权威机构不同意这个看法，他们认为只有那些法律上规定要有从业执照的职业才能叫做专业）。
+      程序员的工作差别很大，这取决于他们为之编写程序的业务类型。例如，更新财务记录所涉及的指示，与飞行模拟器中训练飞行员时模拟在飞机上的状况所需的指示大不相同。简单的程序可以在几个小时内完成，更复杂的程序可能需要一年以上的工作，而其他的程序则永远不会被认为是“完善的”，而是只要继续使用就会不断进行改进。在大多数情况下，几个程序员在高级程序员的监督下作为一个团队一起工作。
+      编写JavaScript的软件工程师
+      程序员根据主要由高级程序员和系统分析员确定的规范编写程序。在设计过程完成后，程序员的工作就是将设计转换成计算机可以遵循的一系列逻辑指令。程序员用众多编程语言中的一种来编写这些指令。根据用途的不同，会使用不同的编程语言。例如，COBOL通常用于通常在大型和中型计算机上运行的业务应用程序，而Fortran则用于科学和工程。C++和Python广泛用于科学和商业应用程序。Java、C#、JS与PHP是Web和商业应用程序的流行编程语言。程序员通常了解一种以上的编程语言，因为许多语言是相似的，他们通常可以相对容易地学习新的语言。在实际中，通常会用程序员们了解的语言来描述程序员，比如，Java程序员，或者用他们所扮演的角色或他们的工作环境来描述：比如，数据库程序员、大型机程序员、Web开发人员等。
+      当修改组成程序的源代码时，程序员需要让其他程序员知道程序要执行的任务。他们通过插入注释以及编写文档，来让其他人更容易理解程序。为了节省工作量，程序员经常使用基本代码库，这些库可以针对特定的应用程序进行修改或自定义。这种方法可以产生更可靠和一致的程序，并通过消除一些重复性的步骤来提高程序员的生产力。
+    </p>
+  </div>
+  <div class="container">
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/1.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/2.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/3.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/4.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/5.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/6.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/7.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/8.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/9.jpg">
+    </div>
+    <div class="img">
+      <img class="pic" alt="加载中" data-src="./images/10.jpg">
+    </div>
+  </div>
+
+  <script>
+    const viewHeight = window.innerHeight || document.documentElement.clientHeight
+    const imgs = document.getElementsByTagName('img')
+
+    let num = 0
+    function lazyLoad() {
+      for (let i = num; i < imgs.length; i++) {
+        let distance = viewHeight - imgs[i].getBoundingClientRect().top
+        if (distance >= 0) {
+          imgs[i].src = imgs[i].getAttribute('data-src')
+          num = i + 1
+        }
+      }
+    }
+    window.addEventListener('scroll', lazyLoad, false)
+  </script>
+</body>
+</html>
