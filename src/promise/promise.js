@@ -13,7 +13,7 @@ function Promise(executor) {
   const self = this
 
   function resolve(value) {
-    setTimeout(function() {
+    setTimeout(() => {
       if (self.state === PENDING) {
         self.state = FULFILLED
         self.data = value
@@ -25,7 +25,7 @@ function Promise(executor) {
   }
 
   function reject(reason) {
-    setTimeout(function() {
+    setTimeout(() => {
       if (self.state === PENDING) {
         self.state = REJECTED
         self.data = reason
@@ -48,10 +48,10 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
 
   let promise2
 
-  return (promise2 = new Promise(function(resolve, reject) {
+  return (promise2 = new Promise((resolve, reject) => {
     if (self.state === FULFILLED) {
 
-      setTimeout(function() {
+      setTimeout(() => {
         if (typeof onFulfilled === 'function') {
           try {
             const x = onFulfilled(self.data)
@@ -66,8 +66,8 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
       })
 
     } else if (self.state === REJECTED) {
-      
-      setTimeout(function() {
+
+      setTimeout(() => {
         if (typeof onRejected === 'function') {
           try {
             const x = onRejected(self.data)
@@ -82,7 +82,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
       })
 
     } else if (self.state === PENDING) {
-      
+
       self.onFulfilledCallback.push(function(promise1Value) {
         if (typeof onFulfilled === 'function') {
           try {
@@ -136,7 +136,7 @@ function promiseResolutionProcedure(promise2, x, resolve, reject) {
     let isCalled = false
 
     try {
-      let then = x.then
+      const then = x.then
       if (typeof then === 'function') {
         then.call(
           x,

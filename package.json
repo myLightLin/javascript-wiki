@@ -6,10 +6,15 @@
   "author": "lightlin",
   "license": "MIT",
   "private": true,
+  "type": "module",
   "scripts": {
+    "lint": "eslint ./src/**/*.js",
     "test": "mocha"
   },
   "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-plugin-import": "^2.27.5",
+    "esm": "^3.2.25",
     "mocha": "^10.2.0",
     "typescript": "^5.0.4"
   }

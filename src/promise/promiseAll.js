@@ -1,12 +1,13 @@
 /**
  * 模拟实现 Promise.all
- * @param {Array} promises 
+ * @param {Array} promises
  * @returns {Promise<any>}
  */
-function promiseAll(promises) {
+export default function promiseAll(promises) {
   const args = toArr(promises)
+  const res = []
   let count = 0
-  let res = []
+
   return new Promise((resolve, reject) => {
     if (args.length === 0) return resolve([])
     for (let i = 0; i < args.length; i++) {
@@ -15,7 +16,7 @@ function promiseAll(promises) {
         res[i] = value
         if (count === args.length) {
           return resolve(res)
-        } 
+        }
       }, (err) => reject(err))
     }
   })
