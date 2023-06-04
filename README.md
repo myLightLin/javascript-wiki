@@ -17,6 +17,7 @@
 13. [JS 之 bind 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/44)
 14. [JS 之 reduce 的模拟实现](https://github.com/myLightLin/javascript-wiki/issues/46)
 15. [JS 之深拷贝与浅拷贝](https://github.com/myLightLin/javascript-wiki/issues/48)
+16. [JS 怎样清空一个数组？](https://github.com/myLightLin/javascript-wiki/issues/71)
 
 ## 小程序
 
