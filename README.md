@@ -91,6 +91,7 @@
 3. [插入排序](https://github.com/myLightLin/javascript-wiki/issues/64)
 4. [选择排序](https://github.com/myLightLin/javascript-wiki/issues/65)
 5. [归并排序](https://github.com/myLightLin/javascript-wiki/issues/62)
+6. [快速排序](https://github.com/myLightLin/javascript-wiki/issues/66)
 
 ## 后记
 
