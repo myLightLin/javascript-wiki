@@ -93,6 +93,7 @@
 5. [归并排序](https://github.com/myLightLin/javascript-wiki/issues/62)
 6. [快速排序](https://github.com/myLightLin/javascript-wiki/issues/66)
 7. [堆排序](https://github.com/myLightLin/javascript-wiki/issues/67)
+8. [桶排序](https://github.com/myLightLin/javascript-wiki/issues/68)
 
 ## 后记
 
