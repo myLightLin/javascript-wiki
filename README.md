@@ -76,12 +76,17 @@
 1. [type 和 interface 的区别](https://github.com/myLightLin/javascript-wiki/issues/16)
 
 ## 设计模式
+
 1. [单例模式](https://github.com/myLightLin/javascript-wiki/issues/59)
 
 ## 工程化
 
 1. [Webpack](https://github.com/myLightLin/javascript-wiki/issues/50)
 2. [Babel](https://github.com/myLightLin/javascript-wiki/issues/57)
+
+## 数据结构与算法
+
+1. [二分查找](https://github.com/myLightLin/javascript-wiki/issues/61)
 
 ## 后记
 
