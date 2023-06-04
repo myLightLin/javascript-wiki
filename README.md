@@ -88,7 +88,8 @@
 
 1. [二分查找](https://github.com/myLightLin/javascript-wiki/issues/61)
 2. [冒泡排序](https://github.com/myLightLin/javascript-wiki/issues/63)
-3. [归并排序](https://github.com/myLightLin/javascript-wiki/issues/62)
+3. [插入排序](https://github.com/myLightLin/javascript-wiki/issues/64)
+4. [归并排序](https://github.com/myLightLin/javascript-wiki/issues/62)
 
 ## 后记
 
