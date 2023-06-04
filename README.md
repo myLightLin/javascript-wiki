@@ -87,6 +87,7 @@
 ## 数据结构与算法
 
 1. [二分查找](https://github.com/myLightLin/javascript-wiki/issues/61)
+2. [归并排序](https://github.com/myLightLin/javascript-wiki/issues/62)
 
 ## 后记
 
