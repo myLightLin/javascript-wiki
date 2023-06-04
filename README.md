@@ -95,6 +95,7 @@
 7. [堆排序](https://github.com/myLightLin/javascript-wiki/issues/67)
 8. [桶排序](https://github.com/myLightLin/javascript-wiki/issues/68)
 9. [计数排序](https://github.com/myLightLin/javascript-wiki/issues/69)
+10. [基数排序](https://github.com/myLightLin/javascript-wiki/issues/70)
 
 ## 后记
 
