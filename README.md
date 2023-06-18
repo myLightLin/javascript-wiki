@@ -97,6 +97,7 @@
 8. [桶排序](https://github.com/myLightLin/javascript-wiki/issues/68)
 9. [计数排序](https://github.com/myLightLin/javascript-wiki/issues/69)
 10. [基数排序](https://github.com/myLightLin/javascript-wiki/issues/70)
+11. [洗牌算法](https://github.com/myLightLin/javascript-wiki/issues/72)
 
 ## 后记
 
