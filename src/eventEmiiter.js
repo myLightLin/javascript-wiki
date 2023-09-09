@@ -15,9 +15,7 @@ class EventEmitter {
   }
   
   on(type, handler) {
-    if (!this.events[type]) {
-      this.events[type] = []
-    }
+    this.events[type] = this.events[type] || []
     this.events[type].push(handler)
     return this
   }
