@@ -1,20 +1,4 @@
 // 实现一个深拷贝
-export function clone(target, map = new WeakMap()) {
-  if (typeof target === 'object') {
-    let cloneTarget = Array.isArray(target) ? [] : {}
-    if (map.get(target)) {
-      return map.get(target)
-    }
-    map.set(target, cloneTarget)
-    for (const key in target) {
-      cloneTarget[key] = clone(target[key])
-    }
-    return cloneTarget
-  } else {
-    return target
-  }
-}
-
 const mapTag = '[object Map]'
 const setTag = '[object Set]'
 const arrayTag = '[object Array]'
@@ -35,8 +19,6 @@ function getInstance(target) {
   const Ctor = target.constructor
   return new Ctor()
 }
-
-export default cloneDeep
 
 function cloneDeep(target, map = new WeakMap()) {
   // 原始类型直接返回
@@ -78,4 +60,22 @@ function cloneDeep(target, map = new WeakMap()) {
   }
 
   return cloneTarget
+}
+
+export default cloneDeep
+
+export function clone(target, map = new WeakMap()) {
+  if (typeof target === 'object') {
+    let cloneTarget = Array.isArray(target) ? [] : {}
+    if (map.get(target)) {
+      return map.get(target)
+    }
+    map.set(target, cloneTarget)
+    for (const key in target) {
+      cloneTarget[key] = clone(target[key])
+    }
+    return cloneTarget
+  } else {
+    return target
+  }
 }
