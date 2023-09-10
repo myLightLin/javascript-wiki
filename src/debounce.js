@@ -1,9 +1,14 @@
 /**
- * 实现防抖函数
+ * 防抖函数
+ * @param {Function} fn 需要防抖的函数
+ * @param {number} wait 防抖时长
+ * @param {boolean} immediate 是否立即执行
+ * @returns {Function}
  */
 function debounce(fn, wait, immediate) {
   let timeout, result
-  let debounced = function() {
+
+  const debounced = function() {
     const self = this
     const args = arguments
 

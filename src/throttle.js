@@ -1,6 +1,11 @@
 /**
- * 实现节流
- * 思路：时间戳 + 定时器
+ * 节流函数
+ * @param {Function} func 需要节流的函数
+ * @param {number} wait 等待时长
+ * @param {object} options 
+ * @param {boolean} [options.leading]
+ * @param {boolean} [options.trailing]
+ * @returns 
  */
 function throttle(func, wait, options = {leading: true, trailing: false}) {
   let timeout, context, args
@@ -43,12 +48,12 @@ function throttle(func, wait, options = {leading: true, trailing: false}) {
 }
 
 function throttle(func, wait) {
-  let timeout, context, args
   let previous = 0
+  let timeout
 
-  let throttled = function() {
-    context = this
-    args = arguments
+  const throttled = function() {
+    const context = this
+    const args = arguments
     let now = +new Date()
     let remaining = wait - (now - previous)
 
@@ -80,14 +85,14 @@ function throttle(func, wait) {
 
 // 定时器
 function throttle(fn, wait) {
-  let timeout, args, context
+  let timeout
   return function() {
-    args = arguments
-    context = this
+    const ctx = this
+    const args = arguments
     if (!timeout) { 
       timeout = setTimeout(function() {
         timeout = null
-        fn.apply(context, args)
+        fn.apply(ctx, args)
       }, wait)
     }
   }
@@ -96,13 +101,12 @@ function throttle(fn, wait) {
 // 时间戳
 function throttle(fn, wait) {
   let previous = 0
-  let args, context
   return function() {
-    args = arguments
-    context = this
+    const ctx = this
+    const args = arguments
     const now = +new Date()
     if (now - previous > wait) {
-      fn.apply(context, args)
+      fn.apply(ctx, args)
       previous = now
     }
   }
