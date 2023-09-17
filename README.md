@@ -83,7 +83,8 @@
 ## 工程化
 
 1. [Webpack](https://github.com/myLightLin/javascript-wiki/issues/50)
-2. [Babel](https://github.com/myLightLin/javascript-wiki/issues/57)
+2. [Vite](https://github.com/myLightLin/javascript-wiki/issues/73)
+3. [Babel](https://github.com/myLightLin/javascript-wiki/issues/57)
 
 ## 数据结构与算法
 
