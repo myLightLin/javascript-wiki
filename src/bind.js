@@ -1,3 +1,5 @@
+/* eslint-disable prefer-rest-params */
+/* eslint-disable no-undef */
 // 模拟实现 bind
 Function.prototype.myBind = function(thisArg) {
   if (typeof this !== 'function') {
@@ -9,10 +11,10 @@ Function.prototype.myBind = function(thisArg) {
   } else {
     thisArg = Object(thisArg)
   }
-  
+
   const thisFn = this
   const args = Array.prototype.slice.call(arguments, 1)
-  
+
   const fBound = function() {
     const bindArgs = Array.prototype.slice.call(arguments)
     const isNew = this instanceof fBound
@@ -23,6 +25,6 @@ Function.prototype.myBind = function(thisArg) {
   const fNOP = function() {}
   fNOP.prototype = this.prototype
   fBound.prototype = new fNOP()
-  
+
   return fBound
 }

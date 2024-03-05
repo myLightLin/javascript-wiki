@@ -40,7 +40,7 @@ function cloneDeep(target, map = new WeakMap()) {
 
   // 处理 Set
   if (type === setTag) {
-    target.forEach(val => {
+    target.forEach((val) => {
       cloneTarget.add(cloneDeep(val, map))
     })
     return cloneTarget
@@ -66,7 +66,7 @@ export default cloneDeep
 
 export function clone(target, map = new WeakMap()) {
   if (typeof target === 'object') {
-    let cloneTarget = Array.isArray(target) ? [] : {}
+    const cloneTarget = Array.isArray(target) ? [] : {}
     if (map.get(target)) {
       return map.get(target)
     }
@@ -75,7 +75,7 @@ export function clone(target, map = new WeakMap()) {
       cloneTarget[key] = clone(target[key])
     }
     return cloneTarget
-  } else {
-    return target
   }
+  return target
+
 }

@@ -2,24 +2,24 @@
  * 实现一个 EventEmiiter 类
  * {@link https://github.com/myLightLin/javascript-wiki/issues/45 Github}
  */
-class EventEmitter {
+export class EventEmitter {
   constructor() {
     this.events = {}
   }
-  
+
   emit(type, ...args) {
-    this.events[type].forEach(fn => {
+    this.events[type].forEach((fn) => {
       fn(...args)
     })
     return true
   }
-  
+
   on(type, handler) {
     this.events[type] = this.events[type] || []
     this.events[type].push(handler)
     return this
   }
-  
+
   off(type, handler) {
     const lis = this.events[type]
     if (!lis) return this
@@ -31,7 +31,7 @@ class EventEmitter {
     }
     return this
   }
-  
+
   once(type, handler) {
     this.events[type] = this.events[type] || []
     const onceWrapper = () => {

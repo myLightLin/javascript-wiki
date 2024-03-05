@@ -1,11 +1,11 @@
 /**
  * 将列表还原成树状图
- * @param {object[]} data 
+ * @param {object[]} data
  */
-function listToTree(data, pid = null) {
+export function listToTreeRecursive(data, pid = null) {
   return data.reduce((acc, item) => {
     if (item.pid === pid) {
-      const children = listToTree(data, item.id)
+      const children = listToTreeRecursive(data, item.id)
       if (children.length) {
         item.children = children
       }
@@ -15,7 +15,7 @@ function listToTree(data, pid = null) {
   }, [])
 }
 
-function listToTree2(arr) {
+export function listToTreeIterative(arr) {
   const map = {}
   const res = []
 
@@ -25,7 +25,7 @@ function listToTree2(arr) {
     item.children = []
   }
 
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     const item = arr[i]
     if (item.pid === null) {
       res.push(item)
@@ -35,29 +35,4 @@ function listToTree2(arr) {
   }
 
   return res
-}
-
-// Test
-const list = [
-  { pid: null, id: 1, data: "1" },
-  { pid: 1, id: 2, data: "2-1" },
-  { pid: 1, id: 3, data: "2-2" },
-  { pid: 2, id: 4, data: "3-1" },
-  { pid: 3, id: 5, data: "3-2" },
-  { pid: 4, id: 6, data: "4-1" },
-]
-
-// Expect
-const res = {
-  pid: null,
-  id: 1,
-  data: "1",
-  children: [
-    {
-      id: 2,
-      pid: 1,
-      data: '2-1',
-      children: []
-    }
-  ]
 }

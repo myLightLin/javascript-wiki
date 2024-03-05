@@ -2,8 +2,8 @@
  * @description Find all javascript objects
  * @returns {Set} Set of all javascript objects
  */
-var set = new Set();
-var objects = [
+const set = new Set()
+const objects = [
   eval,
   isFinite,
   isNaN,
@@ -50,20 +50,20 @@ var objects = [
   Atomics,
   JSON,
   Math,
-  Reflect,
-];
-objects.forEach((o) => set.add(o));
+  Reflect
+]
+objects.forEach((o) => set.add(o))
 
-for (var i = 0; i < objects.length; i++) {
-  var o = objects[i];
-  for (var p of Object.getOwnPropertyNames(o)) {
-    var d = Object.getOwnPropertyDescriptor(o, p);
+for (let i = 0; i < objects.length; i++) {
+  const o = objects[i]
+  for (const p of Object.getOwnPropertyNames(o)) {
+    const d = Object.getOwnPropertyDescriptor(o, p)
     if (
-      (d.value !== null && typeof d.value === "object") ||
-      typeof d.value === "function"
+      (d.value !== null && typeof d.value === 'object') ||
+      typeof d.value === 'function'
     )
-      if (!set.has(d.value)) set.add(d.value), objects.push(d.value);
-    if (d.get) if (!set.has(d.get)) set.add(d.get), objects.push(d.get);
-    if (d.set) if (!set.has(d.set)) set.add(d.set), objects.push(d.set);
+    {if (!set.has(d.value)) set.add(d.value), objects.push(d.value)}
+    if (d.get) if (!set.has(d.get)) set.add(d.get), objects.push(d.get)
+    if (d.set) if (!set.has(d.set)) set.add(d.set), objects.push(d.set)
   }
 }

@@ -27,8 +27,8 @@ Function.prototype.myApply = function(thisArg, arr) {
   } else {
     result = thisArg[func]()
   }
-  
+
   delete thisArg[func]
-  
+
   return result
 }

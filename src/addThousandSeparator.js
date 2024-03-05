@@ -14,12 +14,12 @@ export default function addThousandSeparator(num) {
     count++
     result = integerPart[i] + result
     if (count % 3 === 0 && i !== 0) {
-      result = ',' + result
+      result = `,${result}`
     }
   }
 
   if (decimalPart) {
-    result = result + '.' + decimalPart
+    result = `${result}.${decimalPart}`
   }
 
   return result

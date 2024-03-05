@@ -4,7 +4,7 @@ arr[Symbol.iterator] = function() {
   const target = this
   const len = target.length
   let index = 0
-  
+
   return {
     next() {
       return {

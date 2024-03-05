@@ -1,6 +1,6 @@
 /**
  * 寄生组合式继承
- * @param {*} name 
+ * @param {*} name
  */
 function Parent(name) {
   this.name = name

@@ -1,11 +1,11 @@
 /**
  * 大数相加算法
- * @param {string} n1 
- * @param {string} n2 
+ * @param {string} n1
+ * @param {string} n2
  * @returns {string}
  */
 function add(n1, n2) {
-  let maxLen = Math.max(n1.length, n2.length)
+  const maxLen = Math.max(n1.length, n2.length)
   const s1 = n1.padStart(maxLen, 0)
   const s2 = n2.padStart(maxLen, 0)
 
@@ -17,7 +17,7 @@ function add(n1, n2) {
     res = (sum % 10) + res
   }
 
-  if (carry) res = '1' + res
+  if (carry) res = `1${res}`
 
   return res
 }
