@@ -61,9 +61,9 @@
 
 1. [OSI 七层模型与 TCP/IP 五层模型](https://github.com/myLightLin/javascript-wiki/issues/26)
 2. [DNS 的解析过程](https://github.com/myLightLin/javascript-wiki/issues/25)
-3. [HTTP 协议](https://github.com/myLightLin/javascript-wiki/issues/3)
-4. [HTTPS 协议](https://github.com/myLightLin/javascript-wiki/issues/23)
-5. [TCP 与 UDP](https://github.com/myLightLin/javascript-wiki/issues/9)
+3. [TCP 与 UDP](https://github.com/myLightLin/javascript-wiki/issues/9)
+4. [HTTP 协议](https://github.com/myLightLin/javascript-wiki/issues/3)
+5. [HTTPS 协议](https://github.com/myLightLin/javascript-wiki/issues/23)
 6. [WebSocket 协议](https://github.com/myLightLin/javascript-wiki/issues/27)
 
 ## Node
