@@ -12,7 +12,7 @@ export function queueJob(job) {
         queue.forEach((job) => job())
       } finally {
         isFlushing = false
-        queue.clear = 0
+        queue.clear()
       }
     })
   }
