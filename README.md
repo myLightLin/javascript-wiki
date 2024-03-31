@@ -29,6 +29,7 @@
 1. [flex 布局](https://github.com/myLightLin/javascript-wiki/issues/30)
 2. [浅谈 CSS 中的 BFC](https://github.com/myLightLin/javascript-wiki/issues/31)
 3. [CSS 绘制特殊图形](https://github.com/myLightLin/javascript-wiki/issues/51)
+4. [CSS 水平垂直居中的方式](https://github.com/myLightLin/javascript-wiki/issues/74)
 
 ## React
 
