@@ -42,6 +42,7 @@
 7. [React 性能优化](https://github.com/myLightLin/javascript-wiki/issues/39)
 8. [React 和 Vue 的比较](https://github.com/myLightLin/javascript-wiki/issues/34)
 9. [浅谈 React 逻辑复用的几种方式](https://github.com/myLightLin/javascript-wiki/issues/40)
+10. [React 受控组件与非受控组件](https://github.com/myLightLin/javascript-wiki/issues/75)
 
 ## 浏览器
 
