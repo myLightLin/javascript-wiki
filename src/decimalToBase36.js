@@ -1,3 +1,8 @@
+/**
+ * 十进制转换为 36 进制
+ * @param {number} num
+ * @returns {string}
+ */
 export function decimalToBase36(num) {
   if (typeof num !== 'number' || isNaN(num)) {
     throw new Error('num must be a number')
