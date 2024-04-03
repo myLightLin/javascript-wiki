@@ -1,5 +1,5 @@
 # lightlin’s Blog
-知识容易遗忘，把知识点记录下来，即利自己，也利他人
+知识容易遗忘，记录是最好的学习
 ## JavaScript
 
 1. [基本类型与引用类型](https://github.com/myLightLin/javascript-wiki/issues/29)
