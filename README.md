@@ -1,5 +1,5 @@
 # lightlin’s Blog
-既是总结，也是备忘
+知识容易遗忘，把知识点记录下来，即利自己，也利他人
 ## JavaScript
 
 1. [基本类型与引用类型](https://github.com/myLightLin/javascript-wiki/issues/29)
