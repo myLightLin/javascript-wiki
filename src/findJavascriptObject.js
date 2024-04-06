@@ -36,7 +36,6 @@ const objects = [
   TypeError,
   URIError,
   ArrayBuffer,
-  SharedArrayBuffer,
   DataView,
   Float32Array,
   Float64Array,
@@ -47,7 +46,6 @@ const objects = [
   Uint16Array,
   Uint32Array,
   Uint8ClampedArray,
-  Atomics,
   JSON,
   Math,
   Reflect

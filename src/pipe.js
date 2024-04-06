@@ -1,7 +1,8 @@
+/* eslint-disable prefer-rest-params */
 // 函数式编程
 // 实现 pipe 函数
 
-function pipe() {
+export function pipeFn() {
   const args = Array.prototype.slice.call(arguments)
   return function(x) {
     return args.reduce((res, cb) => cb(res), x)
@@ -9,7 +10,7 @@ function pipe() {
 }
 
 // ES6 写法
-const pipe = (...args) => x => args.reduce((res, cb) => cb(res), x)
+const pipe = (...args) => (x) => args.reduce((res, cb) => cb(res), x)
 
 /**
  * Test

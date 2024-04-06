@@ -1,5 +1,6 @@
+/* eslint-disable prefer-rest-params */
 // 模拟实现 new
-function mockNew() {
+export function mockNew() {
   const obj = {}   // 创建空对象
   const constructor = [].shift.call(arguments)  // 获取传入的构造函数
   obj.__proto__ = constructor.prototype   // 设置原型
