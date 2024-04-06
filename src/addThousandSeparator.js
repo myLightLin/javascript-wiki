@@ -10,7 +10,7 @@ export default function addThousandSeparator(num) {
   let result = ''
 
   let count = 0
-  for (let i = integerPart.length; i >= 0; i--) {
+  for (let i = integerPart.length - 1; i >= 0; i--) {
     count++
     result = integerPart[i] + result
     if (count % 3 === 0 && i !== 0) {
