@@ -28,3 +28,13 @@ function lCPrefixTwo(str1: string, str2: string): string {
   }
   return str1.substring(0, j)
 }
+
+function longestCommonPrefixIterate(strs: string[]): string {
+  if (strs === null || strs.length === 0) return ""
+  let prefix = strs[0]
+  for (let i = 1; i < strs.length; i++) {
+    prefix = lCPrefixTwo(prefix, strs[i])
+    if (prefix.length === 0) break
+  }
+  return prefix
+}
