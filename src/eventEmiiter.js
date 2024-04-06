@@ -23,7 +23,7 @@ export class EventEmitter {
   off(type, handler) {
     const lis = this.events[type]
     if (!lis) return this
-    for (let i = lis.length; i > 0; i--) {
+    for (let i = lis.length - 1; i >= 0; i--) {
       if (lis[i] === handler) {
         lis.splice(i, 1)
         break
