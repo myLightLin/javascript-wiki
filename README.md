@@ -88,6 +88,7 @@
 1. [Webpack](https://github.com/myLightLin/javascript-wiki/issues/50)
 2. [Vite](https://github.com/myLightLin/javascript-wiki/issues/73)
 3. [Babel](https://github.com/myLightLin/javascript-wiki/issues/57)
+4. [npm vs yarn vs pnpm](https://github.com/myLightLin/javascript-wiki/issues/79)
 
 ## 数据结构与算法
 
