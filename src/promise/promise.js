@@ -1,3 +1,4 @@
+/* eslint-disable */
 const PENDING = 'pending'
 const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
@@ -43,14 +44,13 @@ function Promise(executor) {
   }
 }
 
-Promise.prototype.then = function(onFulfilled, onRejected) {
+Promise.prototype.then = function (onFulfilled, onRejected) {
   const self = this
 
   let promise2
 
   return (promise2 = new Promise((resolve, reject) => {
     if (self.state === FULFILLED) {
-
       setTimeout(() => {
         if (typeof onFulfilled === 'function') {
           try {
@@ -64,9 +64,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
           resolve(self.data)
         }
       })
-
     } else if (self.state === REJECTED) {
-
       setTimeout(() => {
         if (typeof onRejected === 'function') {
           try {
@@ -80,10 +78,8 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
           reject(self.data)
         }
       })
-
     } else if (self.state === PENDING) {
-
-      self.onFulfilledCallback.push(function(promise1Value) {
+      self.onFulfilledCallback.push((promise1Value) => {
         if (typeof onFulfilled === 'function') {
           try {
             const x = onFulfilled(self.data)
@@ -96,7 +92,7 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
         }
       })
 
-      self.onRejectedCallback.push(function(promise1Reason) {
+      self.onRejectedCallback.push((promise1Reason) => {
         if (typeof onRejected === 'function') {
           try {
             const x = onRejected(self.data)
@@ -119,14 +115,12 @@ function promiseResolutionProcedure(promise2, x, resolve, reject) {
 
   if (x instanceof Promise) {
     if (x.state === PENDING) {
-      x.then(function(value) {
+      x.then((value) => {
         promiseResolutionProcedure(promise2, value, resolve, reject)
       }, reject)
-    }
-    else if (x.state === FULFILLED) {
+    } else if (x.state === FULFILLED) {
       resolve(x.data)
-    }
-    else if (x.state === REJECTED) {
+    } else if (x.state === REJECTED) {
       reject(x.data)
     }
     return
@@ -136,20 +130,20 @@ function promiseResolutionProcedure(promise2, x, resolve, reject) {
     let isCalled = false
 
     try {
-      const then = x.then
+      const { then } = x
       if (typeof then === 'function') {
         then.call(
           x,
-          function resolvePromise(y) {
+          (y) => {
             if (isCalled) return
             isCalled = true
             return promiseResolutionProcedure(promise2, y, resolve, reject)
           },
-          function rejectPromise(r) {
+          (r) => {
             if (isCalled) return
             isCalled = true
             return reject(r)
-          }
+          },
         )
       } else {
         resolve(x)

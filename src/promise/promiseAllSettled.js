@@ -1,26 +1,32 @@
 /**
- * 模拟实现 Promise.all
+ * 模拟实现 Promise.allSettled
  * @param {Array} promises
  * @returns {Promise<any>}
  */
-export default function promiseAll(promises) {
+export default function promiseAllSettled(promises) {
   // eslint-disable-next-line no-use-before-define
   const args = toArr(promises)
   const res = []
-  let count = 0
+  let settledCount = 0
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (args.length === 0) return resolve([])
     for (let i = 0; i < args.length; i++) {
       Promise.resolve(args[i]).then(
         (value) => {
-          count++
-          res[i] = value
-          if (count === args.length) {
+          settledCount++
+          res[i] = { status: 'fulfilled', value }
+          if (settledCount === args.length) {
             return resolve(res)
           }
         },
-        (err) => reject(err),
+        (reason) => {
+          settledCount++
+          res[i] = { status: 'rejected', reason }
+          if (settledCount === args.length) {
+            return resolve(res)
+          }
+        },
       )
     }
     return null
