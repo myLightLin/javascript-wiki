@@ -1,4 +1,3 @@
-
 /**
  * Retry a request
  * @param {Function} fn
@@ -7,15 +6,16 @@
  * @param {number} options.retryDelay
  * @returns
  */
-async function retryRequest(fn, {maxRetries = 3, retryDelay = 1000, timeout = 2000, onError = null} = {}) {
+async function retryRequest(fn, {
+  maxRetries = 3, retryDelay = 1000, timeout = 2000, onError = null,
+} = {}) {
   let error
 
-  const timeoutPromise = (ms) => new Promise((_, reject) =>
-    setTimeout(() => reject(new Error('Request timed out')), ms)
-  )
+  const timeoutPromise = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Request timed out')), ms))
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
+      // eslint-disable-next-line no-await-in-loop
       const result = await Promise.race([fn(), timeoutPromise(timeout)])
       return result
     } catch (err) {
@@ -40,22 +40,26 @@ async function retryRequest(fn, {maxRetries = 3, retryDelay = 1000, timeout = 20
 export default retryRequest
 
 function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 // Test
 const request = () => new Promise((resolve, reject) => {
-  const delay = Math.random() * 5000 // 随机延迟时间
+  const ms = Math.random() * 5000 // 随机延迟时间
   setTimeout(() => {
-    Math.random() > 0.5 ? resolve('Success') : reject(new Error('Error'))
-  }, delay)
+    if (Math.random() > 0.5) {
+      resolve('Success')
+    } else {
+      reject(new Error('Error'))
+    }
+  }, ms)
 })
 
 const handleError = (error, attempt) => {
   console.log(`Error on attempt ${attempt}: ${error.message}`)
   return attempt < 3 // 只在前3次尝试失败时继续重试
-};
+}
 
 retryRequest(request, {
-  onError: handleError
+  onError: handleError,
 }).then(console.log).catch(console.error)

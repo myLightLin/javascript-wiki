@@ -5,10 +5,11 @@
  * @param {boolean} immediate 是否立即执行
  * @returns {Function}
  */
-export function debounce(fn, wait, immediate) {
-  let timeout, result
+export default function debounce(fn, wait, immediate) {
+  let timeout; let
+    result
 
-  const debounced = function() {
+  const debounced = function debounced() {
     const self = this
     // eslint-disable-next-line prefer-rest-params
     const args = arguments
@@ -16,19 +17,19 @@ export function debounce(fn, wait, immediate) {
     if (timeout) clearTimeout(timeout)
     if (immediate) {
       const callNow = !timeout
-      timeout = setTimeout(function() {
+      timeout = setTimeout(() => {
         timeout = null
       }, wait)
       if (callNow) result = fn.apply(self, args)
     } else {
-      timeout = setTimeout(function() {
+      timeout = setTimeout(() => {
         fn.apply(self, args)
       }, wait)
     }
     return result
   }
 
-  debounced.cancel = function() {
+  debounced.cancel = function () {
     clearTimeout(timeout)
     timeout = null
   }

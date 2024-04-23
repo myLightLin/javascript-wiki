@@ -1,6 +1,7 @@
+/* eslint-disable no-extend-native */
 // 模拟实现数组的 reduce 方法
 const orignalReduce = Array.prorotype.reduce
-Array.prototype.reduce = orignalReduce || function(cb, initValue) {
+Array.prototype.reduce = orignalReduce || function (cb, initValue) {
   const array = this
   const startIndex = initValue !== undefined ? 0 : 1
   let pre = initValue ?? array[0]

@@ -10,19 +10,19 @@
 const prizes = [
   {
     name: '抽奖券',
-    weight: 50
+    weight: 50,
   },
   {
     name: '二奖',
-    weight: 80
-  }
+    weight: 80,
+  },
 ]
 
 function draw(prizes) {
   // 根据每个奖品的权重，生成区间 [[0, 50], [50, 100], ...]
   const intervals = prizes.reduce((acc, curr) => {
-    const weight = curr.weight
-    const [, preEnd] = acc[acc.length-1] || [0, 0]
+    const { weight } = curr
+    const [, preEnd] = acc[acc.length - 1] || [0, 0]
     acc.push([preEnd, preEnd + weight])
     return acc
   }, [])

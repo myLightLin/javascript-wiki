@@ -2,9 +2,9 @@
 // 函数式编程
 // 实现 pipe 函数
 
-export function pipeFn() {
+export default function pipeFn() {
   const args = Array.prototype.slice.call(arguments)
-  return function(x) {
+  return function fn(x) {
     return args.reduce((res, cb) => cb(res), x)
   }
 }
@@ -23,4 +23,4 @@ const multiply = (x) => x * 10
 
 const calculate = pipe(add, multiply)
 const val = calculate(10)
-console.log(val)  // 110
+console.log(val) // 110

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 export default function compose(middlewares) {
   if (!Array.isArray(middlewares)) throw new TypeError('Middleware stack must be an array!')
 
@@ -5,7 +6,7 @@ export default function compose(middlewares) {
     if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
   }
 
-  return function(context, next) {
+  return function (context, next) {
     // 采用闭包将索引缓存,来实现调用计数
     let index = -1
     function dispatch(i) {
