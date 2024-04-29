@@ -18,6 +18,10 @@ const prizes = [
   },
 ]
 
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 function draw(prizes) {
   // 根据每个奖品的权重，生成区间 [[0, 50], [50, 100], ...]
   const intervals = prizes.reduce((acc, curr) => {
@@ -28,26 +32,27 @@ function draw(prizes) {
   }, [])
 
   // 找到区间的最小和最大值
-  const [min, max] = intervals.reduce((acc, curr) => {
-    if (curr && curr.length) {
-      acc[0] = Math.min(acc[0], curr[0])
-      acc[1] = Math.max(acc[1], curr[1])
-    }
-    return acc
-  }, [Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER])
+  const [min, max] = intervals.reduce(
+    (acc, curr) => {
+      if (curr && curr.length) {
+        acc[0] = Math.min(acc[0], curr[0])
+        acc[1] = Math.max(acc[1], curr[1])
+      }
+      return acc
+    },
+    [Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER],
+  )
 
   // 随机一个数
   const luckyNumber = random(min, max)
   // 看落在哪个区间
-  const luckPrizeIndex = intervals.findIndex((item) => item[0] <= luckyNumber && item[1] > luckyNumber)
+  const luckPrizeIndex = intervals.findIndex(
+    (item) => item[0] <= luckyNumber && item[1] > luckyNumber,
+  )
   // 找到中奖奖品
   const luckyPirze = prizes[luckPrizeIndex]
 
   return luckyPirze
-}
-
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 console.log(draw(prizes))

@@ -6,12 +6,17 @@
  * @param {number} options.retryDelay
  * @returns
  */
-async function retryRequest(fn, {
-  maxRetries = 3, retryDelay = 1000, timeout = 2000, onError = null,
-} = {}) {
+async function retryRequest(
+  fn,
+  { maxRetries = 3, retryDelay = 1000, timeout = 2000, onError = null } = {},
+) {
   let error
 
-  const timeoutPromise = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Request timed out')), ms))
+  const timeoutPromise = (ms) =>
+    new Promise((_, reject) =>
+      // eslint-disable-next-line no-promise-executor-return
+      setTimeout(() => reject(new Error('Request timed out')), ms),
+    )
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -24,6 +29,7 @@ async function retryRequest(fn, {
       if (onError && onError(error, attempt) === false) break
 
       if (attempt < maxRetries) {
+        // eslint-disable-next-line no-use-before-define, no-await-in-loop
         await delay(retryDelay)
       }
     }
@@ -40,20 +46,22 @@ async function retryRequest(fn, {
 export default retryRequest
 
 function delay(ms) {
+  // eslint-disable-next-line no-promise-executor-return
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 // Test
-const request = () => new Promise((resolve, reject) => {
-  const ms = Math.random() * 5000 // 随机延迟时间
-  setTimeout(() => {
-    if (Math.random() > 0.5) {
-      resolve('Success')
-    } else {
-      reject(new Error('Error'))
-    }
-  }, ms)
-})
+const request = () =>
+  new Promise((resolve, reject) => {
+    const ms = Math.random() * 5000 // 随机延迟时间
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        resolve('Success')
+      } else {
+        reject(new Error('Error'))
+      }
+    }, ms)
+  })
 
 const handleError = (error, attempt) => {
   console.log(`Error on attempt ${attempt}: ${error.message}`)
@@ -62,4 +70,6 @@ const handleError = (error, attempt) => {
 
 retryRequest(request, {
   onError: handleError,
-}).then(console.log).catch(console.error)
+})
+  .then(console.log)
+  .catch(console.error)

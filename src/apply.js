@@ -1,11 +1,14 @@
+/* eslint-disable no-extend-native */
+/* eslint-disable eqeqeq */
 // 模拟实现 apply 方法
-Function.prototype.myApply = function(thisArg, arr) {
-  if (typeof this !== 'function')  throw new TypeError('it must be invoke by function')
+Function.prototype.myApply = function (thisArg, arr) {
+  if (typeof this !== 'function')
+    throw new TypeError('it must be invoke by function')
 
   if (thisArg == undefined) {
     thisArg = global
   } else {
-    thisArg = Object(thisArg)   // 包装成对象
+    thisArg = Object(thisArg) // 包装成对象
   }
 
   // 判断是否类数组对象
@@ -13,7 +16,7 @@ Function.prototype.myApply = function(thisArg, arr) {
     return obj && typeof obj === 'object' && 'length' in obj
   }
 
-  const func = Symbol('func')  // 创建一个不重复的属性常量
+  const func = Symbol('func') // 创建一个不重复的属性常量
   thisArg[func] = this
 
   let result

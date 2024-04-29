@@ -2,26 +2,28 @@
  * 节流函数
  * @param {Function} func 需要节流的函数
  * @param {number} wait 等待时长
- * @param {object} options 
+ * @param {object} options
  * @param {boolean} [options.leading]
  * @param {boolean} [options.trailing]
- * @returns 
+ * @returns
  */
-function throttle(func, wait, options = {leading: true, trailing: false}) {
-  let timeout, context, args
+function throttle(func, wait, options = { leading: true, trailing: false }) {
+  let timeout
+  let context
+  let args
   let previous = 0
 
-  let later = function() {
+  const later = function () {
     previous = options.leading ? new Date().getTime() : 0
     timeout = null
     func.apply(context, args)
     if (!timeout) context = args = null
   }
 
-  let throttled = function() {
-    let now = new Date().getTime()
+  const throttled = function () {
+    const now = new Date().getTime()
     if (!previous && !options.leading) previous = now
-    let remaining = wait - (now - previous)
+    const remaining = wait - (now - previous)
     context = this
     args = arguments
 
@@ -38,7 +40,7 @@ function throttle(func, wait, options = {leading: true, trailing: false}) {
     }
   }
 
-  throttled.cancel = function() {
+  throttled.cancel = function () {
     clearTimeout(timeout)
     timeout = null
     previous = 0
@@ -47,15 +49,15 @@ function throttle(func, wait, options = {leading: true, trailing: false}) {
   return throttled
 }
 
-function throttle(func, wait) {
+export function throttle2(func, wait) {
   let previous = 0
   let timeout
 
-  const throttled = function() {
-    const context = this
-    const args = arguments
-    let now = +new Date()
-    let remaining = wait - (now - previous)
+  const throttled = function () {
+    let context = this
+    let args = arguments
+    const now = +new Date()
+    const remaining = wait - (now - previous)
 
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {
@@ -66,7 +68,7 @@ function throttle(func, wait) {
       func.apply(context, args)
       if (!timeout) context = args = null
     } else if (!timeout) {
-      timeout = setTimeout(function() {
+      timeout = setTimeout(() => {
         timeout = null
         previous = +new Date()
         func.apply(context, args)
@@ -74,7 +76,7 @@ function throttle(func, wait) {
     }
   }
 
-  throttle.cancel = function() {
+  throttle.cancel = function () {
     clearTimeout(timeout)
     timeout = null
     previous = 0
@@ -84,13 +86,13 @@ function throttle(func, wait) {
 }
 
 // 定时器
-function throttle(fn, wait) {
+export function throttle3(fn, wait) {
   let timeout
-  return function() {
+  return function () {
     const ctx = this
     const args = arguments
-    if (!timeout) { 
-      timeout = setTimeout(function() {
+    if (!timeout) {
+      timeout = setTimeout(() => {
         timeout = null
         fn.apply(ctx, args)
       }, wait)
@@ -99,9 +101,9 @@ function throttle(fn, wait) {
 }
 
 // 时间戳
-function throttle(fn, wait) {
+export function throttle4(fn, wait) {
   let previous = 0
-  return function() {
+  return function throttle4() {
     const ctx = this
     const args = arguments
     const now = +new Date()

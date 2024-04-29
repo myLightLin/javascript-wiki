@@ -1,3 +1,4 @@
+/* eslint-disable no-proto */
 /**
  * 模拟实现 instanceof
  * @param {any} leftValue

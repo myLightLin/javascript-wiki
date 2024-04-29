@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-sequences */
 /**
  * @description Find all javascript objects
  * @returns {Set} Set of all javascript objects
@@ -5,8 +7,8 @@
 const set = new Set()
 const objects = [
   eval,
-  isFinite,
-  isNaN,
+  Number.isFinite,
+  Number.isNaN,
   parseFloat,
   parseInt,
   decodeURI,
@@ -48,7 +50,7 @@ const objects = [
   Uint8ClampedArray,
   JSON,
   Math,
-  Reflect
+  Reflect,
 ]
 objects.forEach((o) => set.add(o))
 
@@ -59,8 +61,9 @@ for (let i = 0; i < objects.length; i++) {
     if (
       (d.value !== null && typeof d.value === 'object') ||
       typeof d.value === 'function'
-    )
-    {if (!set.has(d.value)) set.add(d.value), objects.push(d.value)}
+    ) {
+      if (!set.has(d.value)) set.add(d.value), objects.push(d.value)
+    }
     if (d.get) if (!set.has(d.get)) set.add(d.get), objects.push(d.get)
     if (d.set) if (!set.has(d.set)) set.add(d.set), objects.push(d.set)
   }

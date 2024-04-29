@@ -1,3 +1,5 @@
+/* eslint-disable no-extend-native */
+/* eslint-disable eqeqeq */
 /* eslint-disable prefer-rest-params */
 /* eslint-disable no-undef */
 // 模拟实现 bind

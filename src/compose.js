@@ -12,7 +12,10 @@ function compose() {
 }
 
 // ES6 写法
-export const composeFn = (...args) => (x) => args.reduceRight((res, cb) => cb(res), x)
+export const composeFn =
+  (...args) =>
+  (x) =>
+    args.reduceRight((res, cb) => cb(res), x)
 
 /**
  * Test

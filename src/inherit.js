@@ -6,7 +6,7 @@ function Parent(name) {
   this.name = name
 }
 
-Parent.prototype.getName = function() {
+Parent.prototype.getName = function () {
   console.log(this.name)
 }
 
@@ -29,11 +29,11 @@ function inheritPrototype(child, parent) {
 
 inheritPrototype(Child, Parent)
 
-Child.prototype.getAge = function() {
+Child.prototype.getAge = function () {
   console.log(this.age)
 }
 
 // Test
 const child = new Child('小明', 18)
 child.getName() // 小明
-child.getAge()  // 18
+child.getAge() // 18

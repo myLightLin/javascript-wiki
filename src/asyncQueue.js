@@ -1,8 +1,8 @@
 /**
  * 实现异步请求并发控制
  */
-function concurrencyRequest(urls, maxLimit) {
-  return new Promise(resolve => {
+export function concurrencyRequest(urls, maxLimit) {
+  return new Promise((resolve) => {
     if (urls.length === 0) {
       resolve([])
       return
@@ -39,38 +39,41 @@ function concurrencyRequest(urls, maxLimit) {
   })
 }
 
-const sendRequest = (tasks, max) => {
+export const sendRequest = (tasks, max) => {
   let index = 0
-  let result = []
+  const result = []
 
-  const together = new Array(max).map(() => {
-    return new Promise((resolve) => {
-      const run = () => {
-        if (index >= tasks.length) {
-          resolve()
-          return
+  const together = new Array(max).map(
+    () =>
+      new Promise((resolve) => {
+        const run = () => {
+          if (index >= tasks.length) {
+            resolve()
+            return
+          }
+          const cur = index
+          const task = tasks[index]
+          index++
+          task()
+            .then((res) => {
+              result[cur] = res
+            })
+            .catch((err) => {
+              result[cur] = err
+            })
+            .finally(() => {
+              run()
+            })
         }
-        let cur = index
-        let task = tasks[index]
-        index++
-        task().then((res) => {
-          result[cur] = res
-        }).catch(err => {
-          result[cur] = err 
-        })
-        .finally(() => {
-          run()
-        })
-      }
 
-      run()
-    })
-  })
+        run()
+      }),
+  )
 
   return Promise.all(together)
 }
 
-class Scheduler2 {
+export class Scheduler2 {
   constructor(limit) {
     this.limit = limit
     this.queue = []
@@ -92,10 +95,10 @@ class Scheduler2 {
       this.count += 1
       const promise = this.queue.shift()
       promise()
-        .then(res => {
+        .then((res) => {
           promise.resolve(res)
         })
-        .catch(err => {
+        .catch((err) => {
           promise.reject(err)
         })
         .finally(() => {
@@ -106,10 +109,12 @@ class Scheduler2 {
   }
 }
 
-const timeout = (time) => new Promise(resolve => {
-  setTimeout(resolve, time)
-})
+const timeout = (time) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, time)
+  })
 
+// eslint-disable-next-line no-use-before-define
 const scheduler = new Scheduler(2)
 const addTask = (time, order) => {
   scheduler.add(() => timeout(time)).then(() => console.log(order))
@@ -164,7 +169,9 @@ class Scheduler {
 }
 
 function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
 }
 
 async function task(id, duration) {
@@ -173,7 +180,7 @@ async function task(id, duration) {
   console.log(`Task ${id} complete`)
 }
 
-(async () => {
+;(async () => {
   const scheduler = new Scheduler(2)
 
   scheduler.addTask(() => task(1, 1000))
