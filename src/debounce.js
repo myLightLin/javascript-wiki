@@ -6,8 +6,8 @@
  * @returns {Function}
  */
 export default function debounce(fn, wait, immediate) {
-  let timeout; let
-    result
+  let timeout
+  let result
 
   const debounced = function debounced() {
     const self = this

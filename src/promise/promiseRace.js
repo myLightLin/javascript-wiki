@@ -5,7 +5,7 @@ export default function promiseRace(promises) {
       Promise.resolve(promises[i]).then(
         (value) => resolve(value),
         (err) => reject(err),
-      );
+      )
     }
-  });
+  })
 }
