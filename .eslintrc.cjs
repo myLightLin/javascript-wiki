@@ -1,19 +1,19 @@
 module.exports = {
-  parser: "@babel/eslint-parser",
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    "requireConfigFile": false,
-    "babelOptions": {
-      "presets": ["@babel/preset-env"],
-    }
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-env'],
+    },
   },
   extends: [
-    "airbnb",
+    'airbnb',
   ],
   env: {
-    browser: true
+    browser: true,
   },
   rules: {
-    "semi": ["error", "never"],
-    "no-plusplus": "off",
-  }  
+    semi: ['error', 'never'],
+    'no-plusplus': 'off',
+  },
 }
