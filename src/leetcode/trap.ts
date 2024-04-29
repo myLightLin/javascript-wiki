@@ -26,7 +26,7 @@ function trap2(height: number[]): number {
   let right = n - 1
   let lMax = height[0]
   let rMax = height[n-1]
-  while (left <= right) {
+  while (left < right) {
     lMax = Math.max(lMax, height[left])
     rMax = Math.max(rMax, height[right])
     if (lMax < rMax) {
