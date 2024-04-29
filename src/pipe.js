@@ -10,7 +10,10 @@ export default function pipeFn() {
 }
 
 // ES6 写法
-const pipe = (...args) => (x) => args.reduce((res, cb) => cb(res), x)
+const pipe =
+  (...args) =>
+  (x) =>
+    args.reduce((res, cb) => cb(res), x)
 
 /**
  * Test
