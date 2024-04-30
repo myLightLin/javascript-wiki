@@ -20,7 +20,7 @@ function jsonStringify(object: any): string {
     }
   }
   return String(object)
-};
+}
 
 /**
  * example
