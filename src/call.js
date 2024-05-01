@@ -12,7 +12,7 @@ Function.prototype.myCall = function (thisArg, ...args) {
     thisArg = Object(thisArg) // 包装成对象
   }
 
-  const func = Symbol('func') // 创建一个不重复的属性常量
+  const func = Symbol('CALL') // 创建一个不重复的属性常量
   thisArg[func] = this
 
   const res = thisArg[func](...args)

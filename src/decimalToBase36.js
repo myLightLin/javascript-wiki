@@ -4,7 +4,7 @@
  * @returns {string}
  */
 export function decimalToBase36(num) {
-  if (typeof num !== 'number' || isNaN(num)) {
+  if (typeof num !== 'number' || Number.isNaN(num)) {
     throw new Error('num must be a number')
   }
 

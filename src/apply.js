@@ -16,7 +16,7 @@ Function.prototype.myApply = function (thisArg, arr) {
     return obj && typeof obj === 'object' && 'length' in obj
   }
 
-  const func = Symbol('func') // 创建一个不重复的属性常量
+  const func = Symbol('APPLY') // 创建一个不重复的属性常量
   thisArg[func] = this
 
   let result
