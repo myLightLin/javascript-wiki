@@ -24,6 +24,7 @@ function getPromiseWithCancel(originPromise) {
 const originPromise = axios.get(url)
 const promiseWithCancel = getPromiseWithCancel(originPromise)
 promiseWithCancel.then((data) => {
+  // eslint-disable-next-line no-console
   console.log('渲染数据', data)
 })
 
