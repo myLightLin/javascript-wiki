@@ -6,7 +6,6 @@
  * @returns {Promise<any>}
  */
 export default function promiseAll(promises) {
-  // eslint-disable-next-line no-use-before-define
   const args = toArr(promises)
   const res = []
   let count = 0
@@ -35,7 +34,6 @@ function toArr(arr) {
 
   if (Array.isArray(arr)) return arr
 
-  // eslint-disable-next-line no-use-before-define
   if (isArrayLike(arr)) return Array.from(arr)
 
   return [arr]

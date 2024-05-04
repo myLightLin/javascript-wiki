@@ -29,7 +29,7 @@ async function retryRequest(
       if (onError && onError(error, attempt) === false) break
 
       if (attempt < maxRetries) {
-        // eslint-disable-next-line no-use-before-define, no-await-in-loop
+        // eslint-disable-next-line no-await-in-loop
         await delay(retryDelay)
       }
     }

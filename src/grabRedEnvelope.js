@@ -4,6 +4,10 @@
  * @param {number} participants 参与人数
  */
 export default function generateRedEnvelope(totalMoney, participants) {
+  if (typeof totalMoney !== 'number' || typeof participants !== 'number') {
+    throw new Error('Invalid params type')
+  }
+
   if (totalMoney <= 0 || participants <= 0) {
     throw new Error('Invalid total money or number of participants')
   }
@@ -14,17 +18,26 @@ export default function generateRedEnvelope(totalMoney, participants) {
   let remainingParticipants = participants
 
   for (let i = 0; i < participants - 1; i++) {
-    const max = remainingMoney - remainingParticipants + 1
-    const amount = Math.floor(Math.random() * max) + 1
-    amounts[i] = amount / 100
+    // 随机范围：[1，剩余人均金额的 2 倍-1]分，保证每个人至少能分到 1 分钱
+    const amount = random(1, (remainingMoney / remainingParticipants) * 2 - 1)
+    amounts[i] = amount
     remainingMoney -= amount
     remainingParticipants--
   }
 
   // 最后一个人抢剩下的金额
-  amounts[participants - 1] = remainingMoney / 100
+  amounts[participants - 1] = remainingMoney
 
-  return amounts
+  const formattedAmounts = amounts.map(formatAmount).map(Number)
+  return formattedAmounts
+}
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function formatAmount(amount) {
+  return (amount / 100).toFixed(2)
 }
 
 // Example usage

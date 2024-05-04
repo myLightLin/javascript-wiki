@@ -56,7 +56,8 @@
     "no-shadow": "off",
     // Rules up for discussion.
     "no-multi-assign": "off",
-    "new-cap": "off"
+    "new-cap": "off",
+    "no-use-before-define": "off"
   },
   "overrides": [
     {

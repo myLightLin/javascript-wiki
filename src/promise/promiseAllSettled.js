@@ -7,7 +7,6 @@
  * @returns {Promise<any>}
  */
 export default function promiseAllSettled(promises) {
-  // eslint-disable-next-line no-use-before-define
   const args = toArr(promises)
   const res = []
   let settledCount = 0

@@ -114,7 +114,6 @@ const timeout = (time) =>
     setTimeout(resolve, time)
   })
 
-// eslint-disable-next-line no-use-before-define
 const scheduler = new Scheduler(2)
 const addTask = (time, order) => {
   scheduler.add(() => timeout(time)).then(() => console.log(order))
