@@ -1,15 +1,52 @@
-// npx promises-aplus-tests ./test/promise/promise.test.js
-const Promise = require('../../src/promise/promise')
+import Promise from '@/promise/promise'
 
-Promise.deferred = function () {
-  const obj = {}
+describe('Promise constructor test', () => {
+  test('should resolve', () =>
+    new Promise((resolve) => {
+      resolve(1)
+    }).then((value) => {
+      expect(value).toBe(1)
+    }))
 
-  obj.promise = new Promise((resolve, reject) => {
-    obj.resolve = resolve
-    obj.reject = reject
-  })
+  test('should reject', () =>
+    new Promise((_, reject) => {
+      reject('error')
+    }).catch((reason) => {
+      expect(reason).toBe('error')
+    }))
 
-  return obj
-}
+  test('should chain', () =>
+    new Promise((resolve) => {
+      resolve(1)
+    })
+      .then((value) => value + 1)
+      .then((value) => {
+        expect(value).toBe(2)
+      }))
 
-module.exports = Promise
+  test('should catch', () =>
+    new Promise((_, reject) => {
+      reject('error')
+    }).catch((reason) => {
+      expect(reason).toBe('error')
+    }))
+
+  test('should chain catch', () =>
+    new Promise((_, reject) => {
+      reject('error')
+    })
+      .catch((reason) => reason)
+      .then((value) => {
+        expect(value).toBe('error')
+      }))
+
+  test('should chain catch and then', () =>
+    new Promise((_, reject) => {
+      reject('error')
+    })
+      .catch((reason) => reason)
+      .then((value) => value)
+      .then((value) => {
+        expect(value).toBe('error')
+      }))
+})

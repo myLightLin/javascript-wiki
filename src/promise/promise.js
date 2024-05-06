@@ -158,4 +158,8 @@ function promiseResolutionProcedure(promise2, x, resolve, reject) {
   }
 }
 
-module.exports = Promise
+Promise.prototype.catch = function (onRejected) {
+  return this.then(null, onRejected)
+}
+
+export default Promise

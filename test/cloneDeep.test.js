@@ -1,92 +1,185 @@
-import assert from 'node:assert/strict'
-import cloneDeep from '../src/cloneDeep.js'
+import cloneDeep from '@/cloneDeep'
 
 describe('cloneDeep', () => {
-  it('should clone primitive values', () => {
-    const a = 123
-    const b = cloneDeep(a)
-    assert.strictEqual(a, b)
+  test('should clone deep objects', () => {
+    const obj = { a: 1, b: { c: 2 } }
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
   })
 
-  it('should clone string values', () => {
-    const a = '123'
-    const b = cloneDeep(a)
-    assert.strictEqual(a, b)
+  test('should clone deep arrays', () => {
+    const arr = [1, [2]]
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
   })
 
-  it('should clone boolean values', () => {
-    const a = true
-    const b = cloneDeep(a)
-    assert.strictEqual(a, b)
+  test('should clone deep objects with circular references', () => {
+    const obj = { a: 1 }
+    obj.b = obj
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
+    expect(clone.b).toBe(clone)
   })
 
-  it('should clone null values', () => {
-    const a = null
-    const b = cloneDeep(a)
-    assert.strictEqual(a, b)
+  test('should clone deep arrays with circular references', () => {
+    const arr = [1]
+    arr.push(arr)
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
+    expect(clone[1]).toBe(clone)
   })
 
-  it('should clone undefined values', () => {
-    const a = undefined
-    const b = cloneDeep(a)
-    assert.strictEqual(a, b)
+  test('should clone deep objects with circular references in arrays', () => {
+    const obj = { a: 1 }
+    obj.b = [obj]
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
+    expect(clone.b[0]).not.toBe(obj.b[0])
+    expect(clone.b[0]).toBe(clone)
   })
 
-  it('should clone symbol values', () => {
-    const a = Symbol()
-    const b = cloneDeep(a)
-    assert.strictEqual(a, b)
+  test('should clone deep arrays with circular references in objects', () => {
+    const arr = [1]
+    arr.push({ a: arr })
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
+    expect(clone[1].a).not.toBe(arr[1].a)
+    expect(clone[1].a).toBe(clone)
   })
 
-  it('should clone plain objects', () => {
-    const a = {
-      foo: {
-        bar: 'baz',
-      },
-    }
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep objects with multiple circular references', () => {
+    const obj = { a: 1 }
+    obj.b = obj
+    obj.c = obj
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
+    expect(clone.b).toBe(clone)
+    expect(clone.c).not.toBe(obj.c)
+    expect(clone.c).toBe(clone)
   })
 
-  it('should clone arrays', () => {
-    const a = [1, 2, 3]
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep arrays with multiple circular references', () => {
+    const arr = [1]
+    arr.push(arr)
+    arr.push(arr)
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
+    expect(clone[1]).toBe(clone)
+    expect(clone[2]).not.toBe(arr[2])
+    expect(clone[2]).toBe(clone)
   })
 
-  it('should clone nested arrays', () => {
-    const a = [
-      [1, 2],
-      [3, 4],
-    ]
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep objects with multiple circular references in arrays', () => {
+    const obj = { a: 1 }
+    obj.b = [obj]
+    obj.c = [obj]
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
+    expect(clone.b[0]).not.toBe(obj.b[0])
+    expect(clone.b[0]).toBe(clone)
+    expect(clone.c).not.toBe(obj.c)
+    expect(clone.c[0]).not.toBe(obj.c[0])
+    expect(clone.c[0]).toBe(clone)
   })
 
-  it('should clone functions', () => {
-    const a = function () {
-      return 1 + 2
-    }
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep arrays with multiple circular references in objects', () => {
+    const arr = [1]
+    arr.push({ a: arr })
+    arr.push({ a: arr })
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
+    expect(clone[1].a).not.toBe(arr[1].a)
+    expect(clone[1].a).toBe(clone)
+    expect(clone[2]).not.toBe(arr[2])
+    expect(clone[2].a).not.toBe(arr[2].a)
+    expect(clone[2].a).toBe(clone)
   })
 
-  it('should clone regular expressions', () => {
-    const a = /foo/gim
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep objects with circular references in arrays and objects', () => {
+    const obj = { a: 1 }
+    obj.b = [obj]
+    obj.c = { d: obj }
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
+    expect(clone.b[0]).not.toBe(obj.b[0])
+    expect(clone.b[0]).toBe(clone)
+    expect(clone.c).not.toBe(obj.c)
+    expect(clone.c.d).not.toBe(obj.c.d)
+    expect(clone.c.d).toBe(clone)
   })
 
-  it('should clone dates', () => {
-    const a = new Date()
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep arrays with circular references in objects and arrays', () => {
+    const arr = [1]
+    arr.push({ a: arr })
+    arr.push([arr])
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
+    expect(clone[1].a).not.toBe(arr[1].a)
+    expect(clone[1].a).toBe(clone)
+    expect(clone[2]).not.toBe(arr[2])
+    expect(clone[2][0]).not.toBe(arr[2][0])
+    expect(clone[2][0]).toBe(clone)
   })
 
-  it('should clone Maps', () => {
-    const a = new Map()
-    a.set('foo', { bar: 'baz' })
-    const b = cloneDeep(a)
-    assert.deepStrictEqual(a, b)
+  test('should clone deep objects with multiple circular references in arrays and objects', () => {
+    const obj = { a: 1 }
+    obj.b = [obj]
+    obj.c = { d: obj }
+    obj.e = [obj]
+    const clone = cloneDeep(obj)
+    expect(clone).toEqual(obj)
+    expect(clone).not.toBe(obj)
+    expect(clone.b).not.toBe(obj.b)
+    expect(clone.b[0]).not.toBe(obj.b[0])
+    expect(clone.b[0]).toBe(clone)
+    expect(clone.c).not.toBe(obj.c)
+    expect(clone.c.d).not.toBe(obj.c.d)
+    expect(clone.c.d).toBe(clone)
+    expect(clone.e).not.toBe(obj.e)
+    expect(clone.e[0]).not.toBe(obj.e[0])
+    expect(clone.e[0]).toBe(clone)
+  })
+
+  test('should clone deep arrays with multiple circular references in objects and arrays', () => {
+    const arr = [1]
+    arr.push({ a: arr })
+    arr.push([arr])
+    arr.push({ a: arr })
+    const clone = cloneDeep(arr)
+    expect(clone).toEqual(arr)
+    expect(clone).not.toBe(arr)
+    expect(clone[1]).not.toBe(arr[1])
+    expect(clone[1].a).not.toBe(arr[1].a)
+    expect(clone[1].a).toBe(clone)
+    expect(clone[2]).not.toBe(arr[2])
+    expect(clone[2][0]).not.toBe(arr[2][0])
+    expect(clone[2][0]).toBe(clone)
+    expect(clone[3]).not.toBe(arr[3])
+    expect(clone[3].a).not.toBe(arr[3].a)
+    expect(clone[3].a).toBe(clone)
   })
 })

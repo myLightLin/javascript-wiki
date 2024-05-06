@@ -1,4 +1,4 @@
-function getPromiseWithCancel(originPromise) {
+export default function getPromiseWithCancel(originPromise) {
   let cancel = () => {}
   let isCancel = false
   const cancelPromise = new Promise((resolve, reject) => {

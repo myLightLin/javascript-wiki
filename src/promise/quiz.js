@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-// Promise 执行顺序考察
+// Promise 小测验
 function promise1() {
   return new Promise((resolve) => {
     console.log('promise1 start')
