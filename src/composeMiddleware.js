@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-export default function compose(middlewares) {
+export default function composeMiddleware(middlewares) {
   if (!Array.isArray(middlewares))
     throw new TypeError('Middleware stack must be an array!')
 
