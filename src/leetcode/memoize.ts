@@ -8,7 +8,7 @@ type Fn = (...params: any) => any
  * fib 接收一个整型参数 n ，如果 n <= 1 则返回 1，否则返回 fib (n - 1) + fib (n - 2)。
  * factorial 接收一个整型参数 n ，如果 n <= 1 则返回  1 ，否则返回 factorial(n - 1) * n 。
  */
-function memoize(fn: Fn): Fn {
+export default function memoize(fn: Fn): Fn {
   const map = new Map<string, any>()
   return function(this: any, ...args: any[]) {
     const key = args.join(',')
@@ -31,4 +31,3 @@ function memoize(fn: Fn): Fn {
  * memoizedFn(2, 3) // 5
  * console.log(callCount) // 1 
  */
- export {}
